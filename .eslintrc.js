@@ -41,7 +41,9 @@ module.exports = {
 
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+
     //VLXD app custom
+    'linebreak-style': ['error', 'unix'],
     'comma-dangle': ['error', 'always-multiline'],
     'space-before-function-paren': ['error', 'never'],
     'brace-style': [
