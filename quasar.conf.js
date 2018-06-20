@@ -53,6 +53,7 @@ module.exports = function(ctx) {
         'QItemSide',
         // VLXD
         'QSearch',
+        'QTable',
       ],
       directives: ['Ripple'],
       // Quasar plugins

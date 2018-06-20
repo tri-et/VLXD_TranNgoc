@@ -19,7 +19,6 @@
           VLXD Trần Ngọc
           <div slot="subtitle">© Copyright 2018 ETVN Co., Ltd. All rights reserved.</div>
         </q-toolbar-title>
-        <q-search inverted v-model="search" color="green" placeholder="Tìm kiếm ..." clearable="true"/>
       </q-toolbar>
     </q-layout-header>
 
