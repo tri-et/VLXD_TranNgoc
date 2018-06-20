@@ -1,8 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr fFf">
     <q-layout-header>
       <q-toolbar
-        color="primary"
+        color="green"
         :glossy="$q.theme === 'mat'"
         :inverted="$q.theme === 'ios'"
       >
@@ -15,11 +15,11 @@
         >
           <q-icon name="menu" />
         </q-btn>
-
         <q-toolbar-title>
-          Quasar App
-          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+          VLXD Trần Ngọc
+          <div slot="subtitle">© Copyright 2018 ETVN Co., Ltd. All rights reserved.</div>
         </q-toolbar-title>
+        <q-search inverted v-model="search" color="green" placeholder="Tìm kiếm ..." clearable="true"/>
       </q-toolbar>
     </q-layout-header>
 
@@ -32,10 +32,9 @@
         link
         inset-delimiter
       >
-        <q-list-header>Essential Links</q-list-header>
-        <q-item @click.native="openURL('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
+        <q-item to="/products">
+          <q-item-side icon="shopping_basket" />
+          <q-item-main label="Sản Phẩm" sublabel="Liệt Kê & Tìm Kiếm Sản Phẩm" />
         </q-item>
         <q-item @click.native="openURL('https://github.com/quasarframework/')">
           <q-item-side icon="code" />
@@ -70,6 +69,7 @@ export default {
   data() {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
+      search: '',
     }
   },
   methods: {
