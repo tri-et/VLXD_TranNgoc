@@ -33,6 +33,12 @@ module.exports = function(ctx) {
       // https: true,
       // port: 8080,
       open: true, // opens browser window automatically
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8888',
+          // pathRewrite: {'^/api': ''},
+        },
+      },
     },
     // framework: 'all' --- includes everything; for dev only!
     framework: {
@@ -54,6 +60,7 @@ module.exports = function(ctx) {
         // VLXD
         'QSearch',
         'QTable',
+        'QAlert',
       ],
       directives: ['Ripple'],
       // Quasar plugins
