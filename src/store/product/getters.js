@@ -5,3 +5,11 @@ export const getRecs = state => {
 export const getCols = state => {
   return state.cols
 }
+
+export const getIsLoading = state => {
+  return state.isLoading
+}
+
+export const getTitle = state => {
+  return state.title
+}

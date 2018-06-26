@@ -61,11 +61,20 @@ module.exports = function(ctx) {
         'QSearch',
         'QTable',
         'QAlert',
+        'QAjaxBar',
+        'QSpinner',
+        'QSpinnerPie',
+        'QLayoutFooter',
+        'QSelect',
+        'QTh',
+        'QTr',
+        'QTd',
+        'QTableColumns',
       ],
       directives: ['Ripple'],
       // Quasar plugins
       plugins: ['Notify'],
-      // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
+      iconSet: 'material-icons',
       // i18n: 'de' // Quasar language
     },
     // animations: 'all' --- includes all animations

@@ -17,10 +17,12 @@
         </q-btn>
         <q-toolbar-title>
           VLXD Trần Ngọc
-          <div slot="subtitle">© Copyright 2018 ETVN Co., Ltd. All rights reserved.</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
+    <q-layout-footer>
+      <div>© Copyright 2018 ETVN Co., Ltd. All rights reserved.</div>
+    </q-layout-footer>
 
     <q-layout-drawer
       v-model="leftDrawerOpen"
@@ -68,7 +70,6 @@ export default {
   data() {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
-      search: '',
     }
   },
   methods: {
