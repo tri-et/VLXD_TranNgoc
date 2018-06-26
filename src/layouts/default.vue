@@ -21,7 +21,7 @@
       </q-toolbar>
     </q-layout-header>
     <q-layout-footer>
-      <div>© Copyright 2018 ETVN Co., Ltd. All rights reserved.</div>
+      <div class="text-white et-footer text-weight-light"><small><cite>© Copyright 2018 Elitetech Vietnam Co., Ltd. All rights reserved.</cite></small></div>
     </q-layout-footer>
 
     <q-layout-drawer
@@ -79,4 +79,8 @@ export default {
 </script>
 
 <style>
+.et-footer{
+  background-color: #0089d2;
+  font-size: 0.8em;
+}
 </style>

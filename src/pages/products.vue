@@ -20,7 +20,7 @@
     </template>
     <template slot="top-right" slot-scope="props">
       <nobr>
-        <span class="form-label"><i class="q-item-icon material-icons">shopping_basket</i>{{getTitle}}</span>
+        <q-icon name="shopping_basket" size="25px"/><cite class="q-mr-sm">{{getTitle}}</cite>
         <q-btn
           flat round dense
           :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
