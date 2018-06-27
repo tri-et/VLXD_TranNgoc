@@ -6,14 +6,16 @@
     :rows-per-page-options="[15,20,25,50,0]"
     :loading="getIsLoading"
     :pagination.sync="pagination"
+    :selected-rows-label="selectedLabel"
     :selected.sync="selected"
     selection="multiple"
     table-class="et-grid"
     dense
     row-key="id"
-    color="green"
+    color="purple"
     separator="cell"
     no-results-label="Không tìm thấy kết quả nào ..."
+    rows-per-page-label="Hiện"
   >
     <template slot="top-left" slot-scope="props">
       <q-btn :loading="getIsLoading" color="green" @click="fetchRecs" style="margin-right:5px">
@@ -74,6 +76,9 @@ export default {
   },
   methods: {
     ...mapActions('product', ['fetchRecs']),
+    selectedLabel(rowsNo) {
+      return `Đã chọn ${rowsNo}`
+    },
   },
 }
 </script>
