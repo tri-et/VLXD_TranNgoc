@@ -1,40 +1,53 @@
 <template>
   <q-table
-    :title="getTitle"
     :data="getRecs"
     :columns="getCols"
-    row-key="code"
-    selection="multiple"
     :filter="filter"
+    :rows-per-page-options="[15,20,25,50,0]"
+    :loading="getIsLoading"
+    :pagination.sync="pagination"
+    :selected.sync="selected"
+    selection="multiple"
+    table-class="et-grid"
+    dense
+    row-key="id"
+    color="green"
+    separator="cell"
+    no-results-label="Không tìm thấy kết quả nào ..."
   >
     <template slot="top-left" slot-scope="props">
       <q-btn :loading="getIsLoading" color="green" @click="fetchRecs" style="margin-right:5px">
         <q-icon name="refresh" size="25px"/>
         <q-spinner-pie slot="loading" size="25px"/>
       </q-btn>
-      <q-search
-        v-model="filter"
-        :clearable="true"
-        placeholder="Tìm kiếm ..."
-      />
+      <q-icon name="shopping_basket" size="25px"/><cite>{{getTitle}}</cite>
     </template>
     <template slot="top-right" slot-scope="props">
-      <nobr>
-        <q-icon name="shopping_basket" size="25px"/><cite class="q-mr-sm">{{getTitle}}</cite>
-        <q-btn
-          flat round dense
-          :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
-          @click="props.toggleFullscreen"
+      <div style="width:300px" class="q-mr-sm">
+        <q-search
+          v-model="filter"
+          :clearable="true"
+          placeholder="Tìm kiếm ..."
+          color="blue"
+          inverted
         />
-      </nobr>
+      </div>
+      <q-btn
+        flat round dense
+        :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
+        @click="props.toggleFullscreen"
+      />
     </template>
 
     <!-- gets displayed only when there's at least one row selected -->
     <template slot="top-selection" slot-scope="props">
-      <q-btn color="secondary" flat label="Action 1" class="q-mr-sm" />
-      <q-btn color="secondary" flat label="Action 2" />
-      <div class="col" />
-      <q-btn color="negative" flat round delete icon="delete"  />
+      <div class="q-table-control">  <!-- wrap with div.q-table-control to fix jumpimg padding-->
+        <q-btn :loading="getIsLoading" color="red" style="margin-right:5px">
+          <q-icon name="delete" size="25px"/>
+          <q-spinner-pie slot="loading" size="25px"/>
+        </q-btn>
+        <q-icon name="shopping_basket" size="25px"/><cite>{{getTitle}}</cite>
+      </div>
     </template>
   </q-table>
 </template>
@@ -48,6 +61,13 @@ import {mapGetters, mapActions} from 'vuex'
 export default {
   data: () => ({
     filter: '',
+    selected: [],
+    pagination: {
+      sortBy: null, // String, column "name" property value
+      descending: false,
+      page: 1,
+      rowsPerPage: 25, // current rows per page being displayed
+    },
   }),
   computed: {
     ...mapGetters('product', ['getRecs', 'getCols', 'getIsLoading', 'getTitle']),
@@ -57,12 +77,16 @@ export default {
   },
 }
 </script>
+
 <style>
-/* making label text to be vertivally align with the icon  */
-.form-label {
-  margin-right: 10px;
+@media (max-width: 601px) {
+  .et-grid {
+    height: calc(100vh - 232px) !important;
+  }
 }
-.form-label i {
-  vertical-align: sub;
+@media (min-width: 602px) {
+  .et-grid {
+    height: calc(100vh - 180px) !important;
+  }
 }
 </style>
