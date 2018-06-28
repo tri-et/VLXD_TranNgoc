@@ -1,6 +1,7 @@
 export default {
   title: `Thông Tin Sản Phẩm`,
   isLoading: false,
+  selected: [],
   recs: [],
   cols: [
     {

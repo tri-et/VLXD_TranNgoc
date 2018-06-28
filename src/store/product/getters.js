@@ -13,3 +13,7 @@ export const getIsLoading = state => {
 export const getTitle = state => {
   return state.title
 }
+
+export const getSelected = state => {
+  return state.selected
+}

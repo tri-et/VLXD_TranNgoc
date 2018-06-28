@@ -44,7 +44,7 @@
     <!-- gets displayed only when there's at least one row selected -->
     <template slot="top-selection" slot-scope="props">
       <div class="q-table-control">  <!-- wrap with div.q-table-control to fix jumpimg padding-->
-        <q-btn :loading="getIsLoading" color="red" style="margin-right:5px">
+        <q-btn :loading="getIsLoading" color="red" style="margin-right:5px" @click="deleteRecs">
           <q-icon name="delete" size="25px"/>
           <q-spinner-pie slot="loading" size="25px"/>
         </q-btn>
@@ -63,7 +63,6 @@ import {mapGetters, mapActions} from 'vuex'
 export default {
   data: () => ({
     filter: '',
-    selected: [],
     pagination: {
       sortBy: null, // String, column "name" property value
       descending: false,
@@ -73,9 +72,17 @@ export default {
   }),
   computed: {
     ...mapGetters('product', ['getRecs', 'getCols', 'getIsLoading', 'getTitle']),
+    selected: {
+      get() {
+        return this.$store.getters['product/getSelected']
+      },
+      set(val) {
+        this.$store.commit('product/setSelected', val)
+      },
+    },
   },
   methods: {
-    ...mapActions('product', ['fetchRecs']),
+    ...mapActions('product', ['fetchRecs', 'deleteRecs']),
     selectedLabel(rowsNo) {
       return `Đã chọn ${rowsNo}`
     },
