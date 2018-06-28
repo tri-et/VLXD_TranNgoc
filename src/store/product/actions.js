@@ -33,7 +33,7 @@ export const deleteRecs = ({commit, getters}) => {
     }`
   )
     .then(({data}) => {
-      _alert(`Success, ${data.deleteProduct} is deleted!`, 'positive')
+      _alert(`Đã xóa ${data.deleteProduct} sản phẩm`, 'info')
       commit('setIsLoading', false)
 
       // remove deleted recs from state.recs
