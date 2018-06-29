@@ -1,17 +1,13 @@
 // Configuration for your app
 
-module.exports = function (ctx) {
+module.exports = function(ctx) {
   return {
     // app plugins (/src/plugins)
-    plugins: [
-      'axios'
-    ],
-    css: [
-      'app.styl'
-    ],
+    plugins: ['axios'],
+    css: ['app.styl'],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
-      'material-icons' // optional, you are not bound to it
+      'material-icons', // optional, you are not bound to it
       // 'ionicons',
       // 'mdi',
       // 'fontawesome'
@@ -24,19 +20,25 @@ module.exports = function (ctx) {
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
-      extendWebpack (cfg) {
+      extendWebpack(cfg) {
         cfg.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules|quasar)/
+          exclude: /(node_modules|quasar)/,
         })
-      }
+      },
     },
     devServer: {
       // https: true,
       // port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8888',
+          // pathRewrite: {'^/api': ''},
+        },
+      },
     },
     // framework: 'all' --- includes everything; for dev only!
     framework: {
@@ -54,21 +56,29 @@ module.exports = function (ctx) {
         'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        // VLXD
+        'QSearch',
+        'QTable',
+        'QAlert',
+        'QAjaxBar',
+        'QSpinner',
+        'QSpinnerPie',
+        'QLayoutFooter',
+        'QSelect',
+        'QTh',
+        'QTr',
+        'QTd',
+        'QTableColumns',
       ],
-      directives: [
-        'Ripple'
-      ],
+      directives: ['Ripple'],
       // Quasar plugins
-      plugins: [
-        'Notify'
-      ]
-      // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
+      plugins: ['Notify'],
+      iconSet: 'material-icons',
       // i18n: 'de' // Quasar language
     },
     // animations: 'all' --- includes all animations
-    animations: [
-    ],
+    animations: [],
     pwa: {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {},
@@ -82,58 +92,55 @@ module.exports = function (ctx) {
         theme_color: '#027be3',
         icons: [
           {
-            'src': 'statics/icons/icon-128x128.png',
-            'sizes': '128x128',
-            'type': 'image/png'
+            src: 'statics/icons/icon-128x128.png',
+            sizes: '128x128',
+            type: 'image/png',
           },
           {
-            'src': 'statics/icons/icon-192x192.png',
-            'sizes': '192x192',
-            'type': 'image/png'
+            src: 'statics/icons/icon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
           },
           {
-            'src': 'statics/icons/icon-256x256.png',
-            'sizes': '256x256',
-            'type': 'image/png'
+            src: 'statics/icons/icon-256x256.png',
+            sizes: '256x256',
+            type: 'image/png',
           },
           {
-            'src': 'statics/icons/icon-384x384.png',
-            'sizes': '384x384',
-            'type': 'image/png'
+            src: 'statics/icons/icon-384x384.png',
+            sizes: '384x384',
+            type: 'image/png',
           },
           {
-            'src': 'statics/icons/icon-512x512.png',
-            'sizes': '512x512',
-            'type': 'image/png'
-          }
-        ]
-      }
+            src: 'statics/icons/icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+      },
     },
     cordova: {
       // id: 'org.cordova.quasar.app'
     },
     electron: {
       // bundler: 'builder', // or 'packager'
-      extendWebpack (cfg) {
+      extendWebpack(cfg) {
         // do something with Electron process Webpack cfg
       },
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
-
         // OS X / Mac App Store
         // appBundleId: '',
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
-
         // Window only
         // win32metadata: { ... }
       },
       builder: {
         // https://www.electron.build/configuration/configuration
-
         // appId: 'quasar-app'
-      }
-    }
+      },
+    },
   }
 }

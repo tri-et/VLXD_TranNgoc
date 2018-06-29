@@ -1,8 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr fFf">
     <q-layout-header>
       <q-toolbar
-        color="primary"
+        color="green"
         :glossy="$q.theme === 'mat'"
         :inverted="$q.theme === 'ios'"
       >
@@ -15,13 +15,14 @@
         >
           <q-icon name="menu" />
         </q-btn>
-
         <q-toolbar-title>
-          Quasar App
-          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+          VLXD Trần Ngọc
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
+    <q-layout-footer>
+      <div class="text-white et-footer text-weight-light"><small><cite>© Copyright 2018 Elitetech Vietnam Co., Ltd. All rights reserved.</cite></small></div>
+    </q-layout-footer>
 
     <q-layout-drawer
       v-model="leftDrawerOpen"
@@ -32,10 +33,9 @@
         link
         inset-delimiter
       >
-        <q-list-header>Essential Links</q-list-header>
-        <q-item @click.native="openURL('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
+        <q-item to="/products">
+          <q-item-side icon="shopping_basket" />
+          <q-item-main label="Sản Phẩm" sublabel="Liệt Kê & Tìm Kiếm Sản Phẩm" />
         </q-item>
         <q-item @click.native="openURL('https://github.com/quasarframework/')">
           <q-item-side icon="code" />
@@ -79,4 +79,8 @@ export default {
 </script>
 
 <style>
+.et-footer{
+  background-color: #0089d2;
+  font-size: 0.8em;
+}
 </style>
