@@ -47,7 +47,32 @@ export const deleteRecs = ({commit, getters}) => {
       commit('setRecs', _d.clone(getters.getRecs))
     })
     .catch(err => {
-      _alert(err, 'negative')
+      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      commit('setIsLoading', false)
+    })
+}
+
+export const updateRec = ({commit, getters}) => {
+  commit('setIsLoading', true)
+  _post(
+    _d.omit(getters.getEditingRec, ['__index']), // remove __index to match ProductInput definition
+    `mutation ($input: ProductInput) {
+      updateProduct(input: $input) {
+        id
+        code
+        name
+        unit
+        listingPrice
+      }
+    }`
+  )
+    .then(({data}) => {
+      _alert(`Đã cập nhật: ${data.updateProduct.name}`, 'positive')
+      commit('setIsLoading', false)
+      commit('setIsModalOpened', false)
+    })
+    .catch(err => {
+      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
       commit('setIsLoading', false)
     })
 }

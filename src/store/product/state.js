@@ -2,7 +2,8 @@ export default {
   title: `Thông Tin Sản Phẩm`,
   isLoading: false,
   isModalOpened: false,
-  editingRow: {},
+  editingRec: {},
+  backupRec: {},
   selected: [],
   recs: [],
   cols: [

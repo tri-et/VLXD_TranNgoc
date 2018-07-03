@@ -26,6 +26,6 @@ export const getIsModalOpened = state => {
   return state.isModalOpened
 }
 
-export const getEditingRow = state => {
-  return state.editingRow
+export const getEditingRec = state => {
+  return state.editingRec
 }

@@ -18,9 +18,12 @@
     rows-per-page-label="Hiện"
   >
     <template slot="top-left" slot-scope="props">
-      <q-btn :loading="getIsLoading" color="green" @click="fetchRecs" class="q-mr-sm">
+      <q-btn :loading="getIsLoading" color="primary" @click="fetchRecs" class="q-mr-sm">
         <q-icon name="refresh" size="25px"/>
         <q-spinner-pie slot="loading" size="25px"/>
+      </q-btn>
+      <q-btn :disabled="getIsLoading" color="green" @click="setEditingRec({})" class="q-mr-sm">
+        <q-icon name="add" size="25px"/>
       </q-btn>
       <q-icon name="shopping_basket" size="25px"/><cite>{{getTitle}}</cite>
     </template>
@@ -43,7 +46,7 @@
 
     <!-- slot name syntax: body-cell-<column_name> -->
     <q-td auto-width slot="body-cell-edit" slot-scope="props" :props="props">
-      <q-btn size="sm" round dense color="orange-10" icon="build" @click="setEditingRow(props.row)" />
+      <q-btn size="sm" round dense color="orange-10" icon="build" @click="setEditingRec(props.row)" />
     </q-td>
 
     <!-- gets displayed only when there's at least one row selected -->
@@ -119,8 +122,8 @@ export default {
       },
     }),
     ...mapMutations({
-      setEditingRow(dispatch, payload) {
-        return dispatch(this.type + '/setEditingRow', payload)
+      setEditingRec(dispatch, payload) {
+        return dispatch(this.type + '/setEditingRec', payload)
       },
     }),
     selectedLabel(rowsNo) {
