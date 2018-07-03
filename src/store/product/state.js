@@ -1,12 +1,20 @@
 export default {
   title: `Thông Tin Sản Phẩm`,
   isLoading: false,
+  isModalOpened: false,
+  editingRow: {},
   selected: [],
   recs: [],
   cols: [
     {
+      name: 'edit',
+      align: 'left',
+      field: 'edit',
+      width: '34px',
+    },
+    {
       name: 'code',
-      label: 'Mã',
+      label: 'Mã Hàng',
       align: 'left',
       field: 'code',
       sortable: true,
@@ -31,6 +39,36 @@ export default {
       align: 'left',
       field: 'listingPrice',
       sortable: true,
+    },
+  ],
+  fields: [
+    {
+      name: 'id',
+      hidden: true,
+    },
+    {
+      name: 'code',
+      label: 'Mã Hàng',
+      type: 'text',
+      icon: 'book',
+    },
+    {
+      name: 'name',
+      label: 'Tên Sản Phẩm',
+      type: 'text',
+      icon: 'book',
+    },
+    {
+      name: 'unit',
+      label: 'Đơn Vị',
+      type: 'text',
+      icon: 'book',
+    },
+    {
+      name: 'listingPrice',
+      label: 'Giá Niêm Yết',
+      type: 'text',
+      icon: 'book',
     },
   ],
 }

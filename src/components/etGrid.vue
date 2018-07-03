@@ -18,7 +18,7 @@
     rows-per-page-label="Hiện"
   >
     <template slot="top-left" slot-scope="props">
-      <q-btn :loading="getIsLoading" color="green" @click="fetchRecs" style="margin-right:5px">
+      <q-btn :loading="getIsLoading" color="green" @click="fetchRecs" class="q-mr-sm">
         <q-icon name="refresh" size="25px"/>
         <q-spinner-pie slot="loading" size="25px"/>
       </q-btn>
@@ -41,6 +41,11 @@
       />
     </template>
 
+    <!-- slot name syntax: body-cell-<column_name> -->
+    <q-td auto-width slot="body-cell-edit" slot-scope="props" :props="props">
+      <q-btn size="sm" round dense color="orange-10" icon="build" @click="setEditingRow(props.row)" />
+    </q-td>
+
     <!-- gets displayed only when there's at least one row selected -->
     <template slot="top-selection" slot-scope="props">
       <div class="q-table-control">  <!-- wrap with div.q-table-control to fix jumpimg padding-->
@@ -58,7 +63,7 @@
 </style>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import {mapState, mapActions, mapMutations} from 'vuex'
 
 export default {
   props: {
@@ -111,6 +116,11 @@ export default {
       },
       deleteRecs(dispatch, payload) {
         return dispatch(this.type + '/deleteRecs', payload)
+      },
+    }),
+    ...mapMutations({
+      setEditingRow(dispatch, payload) {
+        return dispatch(this.type + '/setEditingRow', payload)
       },
     }),
     selectedLabel(rowsNo) {
