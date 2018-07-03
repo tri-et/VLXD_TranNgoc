@@ -1,5 +1,5 @@
 <template>
-  <q-modal v-model="isModalOpened" :content-css="{minWidth:'80vw',minHeight:'80vh'}">
+  <q-modal v-model="isModalOpened" :content-css="{minWidth:'75vw', minHeight:'80vh'}">
     <q-modal-layout>
         <q-toolbar slot="header" color="tertiary">
           <q-btn
@@ -11,17 +11,17 @@
             icon="keyboard_arrow_left"
             class="q-mr-sm"
           />
-          <q-btn color="secondary">
+          <q-btn color="orange-10">
             <q-icon name="save" size="25px"/>
             <q-spinner-pie slot="loading" size="25px"/>
           </q-btn>
           <q-toolbar-title>
-            Header
+            {{getEditingRow.name}}
           </q-toolbar-title>
         </q-toolbar>
         <div class="layout-padding">
-          <q-field :key="field.name" v-for="field in getFields" v-if="!field.hidden" :label-width="3" :icon="field.icon" :label="field.label" :helper="field.desc" error-label="Some error">
-            <q-input :value="getEditingRow[field.name]" :type="field.type" color="red" />
+          <q-field class="q-mb-md" :key="field.name" v-for="field in getFields" v-if="!field.hidden" :label-width="3" :icon="field.icon" :label="field.label" :helper="field.desc" error-label="Some error">
+            <q-input :value="getEditingRow[field.name]" :type="field.type" color="orange-10" />
           </q-field>
         </div>
     </q-modal-layout>
