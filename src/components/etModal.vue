@@ -7,6 +7,7 @@
             icon="keyboard_arrow_left"
             class="q-mr-md"
             :disabled="getIsLoading"
+            wait-for-ripple
             color="grey-7"
           />
           <q-btn :loading="getIsLoading" :color="getEditingRec.id?'orange-10':'green'" @click="updateRec">
