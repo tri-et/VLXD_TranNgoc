@@ -21,7 +21,7 @@
       </q-toolbar>
     </q-layout-header>
     <q-layout-footer>
-      <div class="text-white et-footer text-weight-light"><small><cite>© Copyright 2018 Elitetech Vietnam Co., Ltd. All rights reserved.</cite></small></div>
+      <div class="text-white et-footer text-weight-light text-center"><small><cite>© Copyright 2018 Elitetech Vietnam Co., Ltd. All rights reserved.</cite></small></div>
     </q-layout-footer>
 
     <q-layout-drawer

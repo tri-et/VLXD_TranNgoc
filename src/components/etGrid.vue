@@ -22,7 +22,7 @@
         <q-icon name="refresh" size="25px"/>
         <q-spinner-pie slot="loading" size="25px"/>
       </q-btn>
-      <q-btn :disabled="getIsLoading" color="green" @click="setEditingRec({})" class="q-mr-sm">
+      <q-btn wait-for-ripple :disabled="getIsLoading" color="green" @click="setEditingRec({})" class="q-mr-sm">
         <q-icon name="add" size="25px"/>
       </q-btn>
       <q-icon name="shopping_basket" size="25px"/><cite>{{getTitle}}</cite>
@@ -45,8 +45,9 @@
     </template>
 
     <!-- slot name syntax: body-cell-<column_name> -->
-    <q-td auto-width slot="body-cell-edit" slot-scope="props" :props="props">
-      <q-btn size="sm" round dense color="orange-10" icon="build" @click="setEditingRec(props.row)" />
+    <q-td class="q-pa-none" auto-width slot="body-cell-edit" slot-scope="props" :props="props">
+      <q-btn round flat wait-for-ripple dense icon="settings" color="orange-10" @click="setEditingRec(props.row)">
+      </q-btn>
     </q-td>
 
     <!-- gets displayed only when there's at least one row selected -->
@@ -143,5 +144,9 @@ export default {
   .et-grid {
     height: calc(100vh - 180px) !important;
   }
+}
+
+.q-pa-none {
+  padding: 0 !important;
 }
 </style>

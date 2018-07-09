@@ -3,14 +3,11 @@
     <q-modal-layout>
         <q-toolbar slot="header" color="tertiary">
           <q-btn
-            flat
-            round
-            dense
             @click="discardEditingRec"
-            inverted
             icon="keyboard_arrow_left"
             class="q-mr-md"
             :disabled="getIsLoading"
+            color="grey-7"
           />
           <q-btn :loading="getIsLoading" :color="getEditingRec.id?'orange-10':'green'" @click="updateRec">
             <q-icon :name="getEditingRec.id?'save':'add'" size="25px"/>
