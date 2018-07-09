@@ -86,6 +86,7 @@ module.exports = function(ctx) {
     animations: [],
     pwa: {
       // workboxPluginMode: 'InjectManifest',
+      workboxPluginMode: 'GenerateSW',
       // workboxOptions: {},
       manifest: {
         // name: 'Quasar App',
