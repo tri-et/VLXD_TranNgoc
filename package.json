@@ -11,8 +11,8 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "cd server && npx babel-node server | quasar dev",
     "build": "quasar build -m pwa",
-    "pushlive": "git add -A && git commit -m\"commit dist folder for live deploy\" && git subtree push --prefix dist/pwa-mat origin live",
-    "deploy": "npm run build && cd server && gulp es6 && cd .. && npm run pushlive"
+    "pushlive": "git add -A && git commit -m\"commit dist folder for live deploy\" && git push origin master && git subtree push --prefix dist/pwa-mat origin live",
+    "deploy": "npm run build && cd server && gulp es6"
   },
   "dependencies": {
     "axios": "^0.18.0"
