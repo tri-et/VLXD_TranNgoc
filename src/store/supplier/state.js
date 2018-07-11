@@ -1,0 +1,75 @@
+export default {
+  title: `Thông Tin Nhà Cung Câp`,
+  isLoading: false,
+  isModalOpened: false,
+  editingRec: {},
+  backupRec: {},
+  selected: [],
+  recs: [],
+  cols: [
+    {
+      name: 'edit',
+      align: 'left',
+      field: 'edit',
+      width: '34px',
+    },
+    {
+      name: 'taxcode',
+      label: 'Mã Nhà Cung Cấp',
+      align: 'left',
+      field: 'taxcode',
+      sortable: true,
+    },
+    {
+      name: 'name',
+      label: 'Tên Nhà Cung Cấp',
+      align: 'left',
+      field: 'name',
+      sortable: true,
+    },
+    {
+      name: 'address',
+      label: 'Địa Chỉ',
+      align: 'left',
+      field: 'address',
+      sortable: true,
+    },
+    {
+      name: 'phone',
+      label: 'Số Điện Thoại',
+      align: 'left',
+      field: 'phone',
+      sortable: true,
+    },
+  ],
+  fields: [
+    {
+      name: 'id',
+      hidden: true,
+    },
+    {
+      name: 'taxcode',
+      label: 'Mã Nhà Cung Cấp',
+      type: 'text',
+      icon: 'outlined_flag',
+    },
+    {
+      name: 'name',
+      label: 'Tên Nhà Cung Cấp',
+      type: 'text',
+      icon: 'import_contacts',
+    },
+    {
+      name: 'address',
+      label: 'Địa Chỉ',
+      type: 'text',
+      icon: 'store',
+    },
+    {
+      name: 'phone',
+      label: 'Số Điện Thoại',
+      type: 'text',
+      icon: 'contact_phone',
+    },
+  ],
+}

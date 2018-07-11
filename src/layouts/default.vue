@@ -1,18 +1,8 @@
 <template>
   <q-layout view="hHh Lpr fFf">
     <q-layout-header>
-      <q-toolbar
-        color="green"
-        :glossy="$q.theme === 'mat'"
-        :inverted="$q.theme === 'ios'"
-      >
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
-        >
+      <q-toolbar color="green" :glossy="$q.theme === 'mat'" :inverted="$q.theme === 'ios'">
+        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
           <q-icon name="menu" />
         </q-btn>
         <q-toolbar-title>
@@ -21,25 +11,22 @@
       </q-toolbar>
     </q-layout-header>
     <q-layout-footer>
-      <div class="text-white et-footer text-weight-light text-center"><small><cite>© Copyright 2018 Elitetech Vietnam Co., Ltd. All rights reserved.</cite></small></div>
+      <div class="text-white et-footer text-weight-light text-center">
+        <small>
+          <cite>© Copyright 2018 Elitetech Vietnam Co., Ltd. All rights reserved.</cite>
+        </small>
+      </div>
     </q-layout-footer>
 
-    <q-layout-drawer
-      v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
-    >
-      <q-list
-        no-border
-        link
-        inset-delimiter
-      >
+    <q-layout-drawer v-model="leftDrawerOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null">
+      <q-list no-border link inset-delimiter>
         <q-item to="/products">
           <q-item-side icon="shopping_basket" />
           <q-item-main label="Sản Phẩm" sublabel="Liệt Kê & Tìm Kiếm Sản Phẩm" />
         </q-item>
-        <q-item @click.native="openURL('https://github.com/quasarframework/')">
-          <q-item-side icon="code" />
-          <q-item-main label="GitHub" sublabel="github.com/quasarframework" />
+        <q-item to="/suppliers">
+          <q-item-side icon="store" />
+          <q-item-main label="Nhà Cung Cấp" sublabel="Liệt Kê & Tìm Kiếm Nhà Cung Cấp" />
         </q-item>
         <q-item @click.native="openURL('https://discord.gg/5TDhbDg')">
           <q-item-side icon="chat" />
@@ -79,7 +66,7 @@ export default {
 </script>
 
 <style>
-.et-footer{
+.et-footer {
   background-color: #0089d2;
   font-size: 0.8em;
 }
