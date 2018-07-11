@@ -9,3 +9,8 @@ deploy() {
 dev() {
   npm run dev
 }
+
+gendb() {
+  cd server
+  npx babel-node db
+}
