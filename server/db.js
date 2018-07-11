@@ -22,6 +22,13 @@ const Product = Conn.define('product', {
   listingPrice: {type: Sequelize.INTEGER, allowNull: true},
 })
 
+const Supplier = Conn.define('supplier', {
+  taxcode: { type: Sequelize.STRING, allowNull: false },
+  name: { type: Sequelize.STRING, allowNull: false },
+  address: { type: Sequelize.STRING, allowNull: true },
+  phone: { type: Sequelize.STRING, allowNull: true },
+})
+
 // Generating demo Data
 // import _d from 'lodash'
 // import Faker from 'faker'
@@ -33,6 +40,18 @@ const Product = Conn.define('product', {
 //       name: Faker.commerce.productName(),
 //       unit: Faker.commerce.productMaterial(),
 //       listingPrice: Faker.commerce.price(),
+//     })
+//   })
+// })
+
+// Conn.sync({ force: true }).then(() => {
+//   console.log('DB Structure created ...')
+//   _d.times(100, () => {
+//     return Supplier.create({
+//       taxcode: Faker.address.countryCode(),
+//       name: Faker.commerce.productName(),
+//       address: Faker.address.streetAddress(),
+//       phone: Faker.phone.phoneNumber(),
 //     })
 //   })
 // })
