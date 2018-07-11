@@ -16,13 +16,21 @@ var _mutation = require('./product/mutation');
 
 var _mutation2 = _interopRequireDefault(_mutation);
 
+var _query3 = require('./supplier/query');
+
+var _query4 = _interopRequireDefault(_query3);
+
+var _mutation3 = require('./supplier/mutation');
+
+var _mutation4 = _interopRequireDefault(_mutation3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var query = new _graphql.GraphQLObjectType({
   name: 'RootQuery',
   description: 'This is the ROOT Query',
   fields: function fields() {
-    return _extends({}, _query2.default);
+    return _extends({}, _query2.default, _query4.default);
   }
 });
 
@@ -30,7 +38,7 @@ var mutation = new _graphql.GraphQLObjectType({
   name: 'Mutation',
   description: 'This is for create/update/delete operation',
   fields: function fields() {
-    return _extends({}, _mutation2.default);
+    return _extends({}, _mutation2.default, _mutation4.default);
   }
 });
 

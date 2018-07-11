@@ -32,9 +32,20 @@ var Product = Conn.define('product', {
   listingPrice: { type: _sequelize2.default.INTEGER, allowNull: true }
 });
 
+// eslint-disable-next-line no-unused-vars
+var Supplier = Conn.define('supplier', {
+  taxcode: { type: _sequelize2.default.STRING, allowNull: false },
+  name: { type: _sequelize2.default.STRING, allowNull: false },
+  address: { type: _sequelize2.default.STRING, allowNull: true },
+  phone: { type: _sequelize2.default.STRING, allowNull: true }
+});
+
+Conn.authenticate();
+
 // Generating demo Data
 // import _d from 'lodash'
 // import Faker from 'faker'
+
 // Conn.sync({force: true}).then(() => {
 //   console.log('DB Structure created ...')
 //   _d.times(100, () => {
@@ -47,5 +58,16 @@ var Product = Conn.define('product', {
 //   })
 // })
 
-Conn.authenticate();
+// Conn.sync({force: true}).then(() => {
+//   console.log('DB Structure created ...')
+//   _d.times(100, () => {
+//     return Supplier.create({
+//       taxcode: Faker.address.countryCode(),
+//       name: Faker.commerce.productName(),
+//       address: Faker.address.streetAddress(),
+//       phone: Faker.phone.phoneNumber(),
+//     })
+//   })
+// })
+
 exports.default = Conn;
