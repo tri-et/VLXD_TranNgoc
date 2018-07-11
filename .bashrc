@@ -5,3 +5,7 @@ deploy() {
     git push origin master
     git subtree push --prefix dist/pwa-mat origin live
 }
+
+dev() {
+  npm run dev
+}
