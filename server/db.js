@@ -1,9 +1,10 @@
 import Sequelize from 'sequelize'
 
 const Op = Sequelize.Op
-
-const Conn = new Sequelize('heroku_c53a18f60a793d9', 'b8558b412c7ee2', 'bf3ad615', {
-  host: 'us-cdbr-iron-east-04.cleardb.net',
+//'heroku_c53a18f60a793d9', 'b8558b412c7ee2', 'bf3ad615',
+// 'us-cdbr-iron-east-04.cleardb.net'
+const Conn = new Sequelize('vlxd', 'root', 'admin123', {
+  host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: Op,
   pool: {
@@ -27,6 +28,13 @@ const Supplier = Conn.define('supplier', {
   name: { type: Sequelize.STRING, allowNull: false },
   address: { type: Sequelize.STRING, allowNull: true },
   phone: { type: Sequelize.STRING, allowNull: true },
+})
+
+const StockIn = Conn.define('stockin', {
+  productId: { type: Sequelize.INTEGER, allowNull: false },
+  supplierId: { type: Sequelize.INTEGER, allowNull: false },
+  price: { type: Sequelize.STRING, allowNull: true },
+  quantity: { type: Sequelize.INTEGER, allowNull: false }
 })
 
 // Generating demo Data

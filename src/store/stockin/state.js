@@ -1,0 +1,75 @@
+export default {
+  title: `Thông Tin Nhập Kho`,
+  isLoading: false,
+  isModalOpened: false,
+  editingRec: {},
+  backupRec: {},
+  selected: [],
+  recs: [],
+  cols: [
+    {
+      name: 'edit',
+      align: 'left',
+      field: 'edit',
+      width: '34px',
+    },
+    {
+      name: 'productId',
+      label: 'Tên Sản Phẩm',
+      align: 'left',
+      field: 'productId',
+      sortable: true,
+    },
+    {
+      name: 'supplierId',
+      label: 'Tên Nhà Cung Cấp',
+      align: 'left',
+      field: 'supplierId',
+      sortable: true,
+    },
+    {
+      name: 'price',
+      label: 'Giá Tham Khảo',
+      align: 'left',
+      field: 'price',
+      sortable: true,
+    },
+    {
+      name: 'quantity',
+      label: 'Số Lượng',
+      align: 'left',
+      field: 'quantity',
+      sortable: true,
+    },
+  ],
+  fields: [
+    {
+      name: 'id',
+      hidden: true,
+    },
+    {
+      name: 'taxcode',
+      label: 'Tên Nhà Cung Cấp',
+      type: 'text',
+      icon: 'outlined_flag',
+    },
+    {
+      name: 'name',
+      label: 'Tên Nhà Cung Cấp',
+      type: 'text',
+      icon: 'import_contacts',
+    },
+    {
+      name: 'address',
+      label: 'Địa Chỉ',
+      type: 'text',
+      icon: 'store',
+    },
+    {
+      name: 'phone',
+      label: 'Số Điện Thoại',
+      type: 'text',
+      icon: 'contact_phone',
+    },
+  ],
+}
