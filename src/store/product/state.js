@@ -6,6 +6,7 @@ export default {
   backupRec: {},
   selected: [],
   recs: [],
+  icon: 'shopping_basket',
   cols: [
     {
       name: 'edit',
