@@ -16,7 +16,8 @@ app.use(
 )
 app.use(
   history({
-    index: '/',
+    index: '',
+    verbose: true,
   })
 )
 

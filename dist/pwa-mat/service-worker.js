@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.9c3f0aca78369cd385fdd5b98e803d08.js"
+  "/precache-manifest.100911540b578cf18feb8de47e9c8331.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vlxd"});

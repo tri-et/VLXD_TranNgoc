@@ -30,7 +30,8 @@ app.use('/api', (0, _expressGraphql2.default)({
   graphiql: true
 }));
 app.use((0, _connectHistoryApiFallback2.default)({
-  index: '/'
+  index: '',
+  verbose: true
 }));
 
 app.listen(process.env.PORT || APP_PORT, function () {
