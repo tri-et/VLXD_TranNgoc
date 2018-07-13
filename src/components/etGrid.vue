@@ -25,7 +25,7 @@
       <q-btn wait-for-ripple :disabled="getIsLoading" color="green" @click="setEditingRec({})" class="q-mr-sm">
         <q-icon name="add" size="25px"/>
       </q-btn>
-      <q-icon name="shopping_basket" size="25px"/><cite>{{getTitle}}</cite>
+      <q-icon :name="getIcon" size="25px"/><cite>{{getTitle}}</cite>
     </template>
     <template slot="top-right" slot-scope="props">
       <div style="width:300px" class="q-mr-sm">
@@ -57,7 +57,7 @@
           <q-icon name="delete" size="25px"/>
           <q-spinner-pie slot="loading" size="25px"/>
         </q-btn>
-        <q-icon name="shopping_basket" size="25px"/><cite>{{getTitle}}</cite>
+        <q-icon :name="getIcon" size="25px"/><cite>{{getTitle}}</cite>
       </div>
     </template>
   </q-table>
@@ -101,6 +101,9 @@ export default {
       },
       getTitle(state, getters) {
         return getters[this.type + '/getTitle']
+      },
+      getIcon(state, getters) {
+        return getters[this.type + '/getIcon']
       },
     }),
     selected: {
