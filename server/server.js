@@ -14,7 +14,11 @@ app.use(
     graphiql: true,
   })
 )
-app.use(history)
+app.use(
+  history({
+    index: '/',
+  })
+)
 
 app.listen(process.env.PORT || APP_PORT, () => {
   console.log(`VLXD_API listening on port ${APP_PORT} ...`)
