@@ -16,7 +16,7 @@ module.exports = function(ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'hash',
-      publicPath: '/',
+      publicPath: '',
       gzip: true,
       // vueCompiler: true,
       // analyze: true,
