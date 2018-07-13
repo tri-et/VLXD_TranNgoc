@@ -72,12 +72,12 @@ self.__precacheManifest = [
     "url": "/statics/icons/apple-icon-152x152.png"
   },
   {
-    "revision": "8c4120b4e88276badbc808e518572fad",
-    "url": "/statics/icons/icon-192x192.png"
-  },
-  {
     "revision": "20c6420ccf16a07d9d56538e30a6b524",
     "url": "/statics/icons/icon-256x256.png"
+  },
+  {
+    "revision": "8c4120b4e88276badbc808e518572fad",
+    "url": "/statics/icons/icon-192x192.png"
   },
   {
     "revision": "e9dbbe8a693dd275c16d32feb101f1c1",
