@@ -56,12 +56,12 @@ self.__precacheManifest = [
     "url": "/fonts/KFOlCnqEu92Fr1MmWUlfBBc-.cf6613d.woff"
   },
   {
-    "revision": "2f9d7587924933c1912c342b190b53ca",
-    "url": "/statics/icons/favicon-32x32.png"
-  },
-  {
     "revision": "3020c8ac2c2872dec7741e5948520093",
     "url": "/statics/icons/icon-128x128.png"
+  },
+  {
+    "revision": "2f9d7587924933c1912c342b190b53ca",
+    "url": "/statics/icons/favicon-32x32.png"
   },
   {
     "revision": "20cec344449f02c2a684",
@@ -72,12 +72,12 @@ self.__precacheManifest = [
     "url": "/statics/icons/apple-icon-152x152.png"
   },
   {
-    "revision": "20c6420ccf16a07d9d56538e30a6b524",
-    "url": "/statics/icons/icon-256x256.png"
-  },
-  {
     "revision": "8c4120b4e88276badbc808e518572fad",
     "url": "/statics/icons/icon-192x192.png"
+  },
+  {
+    "revision": "20c6420ccf16a07d9d56538e30a6b524",
+    "url": "/statics/icons/icon-256x256.png"
   },
   {
     "revision": "e9dbbe8a693dd275c16d32feb101f1c1",
