@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/js/vendor.6e521a7d.js"
   },
   {
-    "revision": "6540f3cf6cd4f8263df3a2d38f5cb18b",
+    "revision": "99eb62d07a008254597d938ac26b15c1",
     "url": "/index.html"
   },
   {
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "/statics/icons/icon-128x128.png"
   },
   {
-    "revision": "5db5803d58b643c4cca9",
-    "url": "/js/app.5db5803d.js"
+    "revision": "20cec344449f02c2a684",
+    "url": "/js/app.20cec344.js"
   },
   {
     "revision": "da2b422e2895b9b9c1782a71b6be9d63",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
     "url": "/fonts/KFOkCnqEu92Fr1MmgVxIIzQ.e9dbbe8.woff"
   },
   {
-    "revision": "5db5803d58b643c4cca9",
+    "revision": "20cec344449f02c2a684",
     "url": "/app.981942c2.css"
   },
   {

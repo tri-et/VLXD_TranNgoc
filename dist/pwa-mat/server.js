@@ -24,12 +24,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var APP_PORT = 8888;
 var app = (0, _express2.default)();
-app.use(_connectHistoryApiFallback2.default);
 app.use((0, _serveStatic2.default)(__dirname));
 app.use('/api', (0, _expressGraphql2.default)({
   schema: _schema2.default,
   graphiql: true
 }));
+app.use(_connectHistoryApiFallback2.default);
 
 app.listen(process.env.PORT || APP_PORT, function () {
   console.log('VLXD_API listening on port ' + APP_PORT + ' ...');
