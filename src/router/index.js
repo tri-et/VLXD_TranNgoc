@@ -21,4 +21,19 @@ const Router = new VueRouter({
   routes,
 })
 
+let isAuth = false
+
+Router.beforeEach((to, _, next) => {
+  // next({path: '/', name: 'login'})
+  console.log(to.matched)
+
+  if (to.meta.requiresAuth) {
+    if (isAuth) next()
+    else next('/login')
+  } else {
+    if (to.path === '/login' && isAuth) next('/')
+    else next()
+  }
+})
+
 export default Router
