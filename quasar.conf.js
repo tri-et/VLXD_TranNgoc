@@ -76,6 +76,12 @@ module.exports = function(ctx) {
         'QField',
         'QInput',
         'QChip',
+        'QCard',
+        'QCardTitle',
+        'QCardMain',
+        'QCardMedia',
+        'QCardSeparator',
+        'QCardActions',
       ],
       directives: ['Ripple', 'CloseOverlay'],
       // Quasar plugins
