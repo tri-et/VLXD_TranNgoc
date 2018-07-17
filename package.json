@@ -15,7 +15,8 @@
     "deploy": "npm run build && npm run pushlive"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "vivus": "^0.4.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
