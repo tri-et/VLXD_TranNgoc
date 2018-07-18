@@ -22,3 +22,8 @@ gendb() {
   cd server
   npx babel-node db
 }
+
+rundb() {
+  cd server
+  npx babel-node server
+}

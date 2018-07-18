@@ -14,6 +14,14 @@ const Conn = new Sequelize('heroku_c53a18f60a793d9', 'b8558b412c7ee2', 'bf3ad615
     idle: 20000,
   },
 })
+
+// eslint-disable-next-line no-unused-vars
+const User = Conn.define('user', {
+  username: {type: Sequelize.STRING, allowNull: false},
+  password: {type: Sequelize.STRING, allowNull: false},
+  roles: {type: Sequelize.STRING, allowNull: true},
+})
+
 // eslint-disable-next-line no-unused-vars
 const Product = Conn.define('product', {
   code: {type: Sequelize.STRING, allowNull: false},
@@ -38,7 +46,7 @@ Conn.authenticate()
 
 // Conn.sync({force: true}).then(() => {
 //   console.log('DB Structure created ...')
-//   _d.times(100, () => {
+//   _d.times(10, () => {
 //     return Product.create({
 //       code: Faker.address.countryCode(),
 //       name: Faker.commerce.productName(),
@@ -46,16 +54,19 @@ Conn.authenticate()
 //       listingPrice: Faker.commerce.price(),
 //     })
 //   })
-// })
-
-// Conn.sync({force: true}).then(() => {
-//   console.log('DB Structure created ...')
-//   _d.times(100, () => {
+//   _d.times(10, () => {
 //     return Supplier.create({
 //       taxcode: Faker.address.countryCode(),
 //       name: Faker.commerce.productName(),
 //       address: Faker.address.streetAddress(),
 //       phone: Faker.phone.phoneNumber(),
+//     })
+//   })
+//   _d.times(10, () => {
+//     return User.create({
+//       username: Faker.address.countryCode(),
+//       password: Faker.commerce.productName(),
+//       roles: Faker.address.streetAddress(),
 //     })
 //   })
 // })
