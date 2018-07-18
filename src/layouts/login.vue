@@ -1,7 +1,7 @@
 <template>
   <q-card inline class="fixed-center">
     <q-card-media>
-      <svg id="logo" viewBox="0 0 483 483"
+      <svg class="center" id="logo" viewBox="0 0 483 483"
         width="128px" height="128px" v-html="getLoginLogo">
       </svg>
     </q-card-media>
@@ -73,8 +73,11 @@ export default {
   background: url('../assets/bridge.jpg') no-repeat center center;
   background-size: cover;
   height: 230px;
-  text-align: center;
-  position: relative;
+  padding: 40px 0;
+}
+.center {
+  margin: auto;
+  display: block;
 }
 
 @media (max-width: 601px) {
