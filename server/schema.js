@@ -1,16 +1,12 @@
-import { GraphQLSchema, GraphQLObjectType } from 'graphql'
+// eslint-disable-next-line no-unused-vars
+import {GraphQLSchema, GraphQLObjectType} from 'graphql'
 import qryProduct from './product/query'
 import mutProduct from './product/mutation'
 
 import qrySupplier from './supplier/query'
 import mutSupplier from './supplier/mutation'
 
-import qryStockin from './stockin/query'
-import mutStockin from './stockin/mutation'
-
-import qryStock from './stock/query'
-import mutStock from './stock/mutation'
-
+// eslint-disable-next-line no-unused-vars
 const query = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'This is the ROOT Query',
@@ -24,6 +20,7 @@ const query = new GraphQLObjectType({
   },
 })
 
+// eslint-disable-next-line no-unused-vars
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   description: 'This is for create/update/delete operation',
@@ -37,9 +34,33 @@ const mutation = new GraphQLObjectType({
   },
 })
 
-const SCHEMA = new GraphQLSchema({
-  query,
-  mutation,
+import {makeExecutableSchema} from 'graphql-tools'
+import defUser from './user/def'
+import resUser from './user/res'
+
+import defUser1 from './user1/def'
+import resUser1 from './user1/res'
+
+const RootQuery = `
+  type RootQuery {
+    getUser: User
+    listUser: [User]
+
+    getUser1: User1
+    listUser1: [User1]
+  }
+`
+const SchemaDefinition = `
+  schema {
+    query: RootQuery
+  }
+`
+export default makeExecutableSchema({
+  typeDefs: [SchemaDefinition, RootQuery, defUser, defUser1],
+  resolvers: [resUser, resUser1],
 })
 
-export default SCHEMA
+// const SCHEMA = new GraphQLSchema({
+//   query,
+//   mutation,
+// })
