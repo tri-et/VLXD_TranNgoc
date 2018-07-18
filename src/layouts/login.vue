@@ -12,30 +12,26 @@
       </div>
     </q-card-title>
     <q-card-main>
-      <p>$・Italian, Cafe</p>
-      <p class="text-faded">Small plates, salads & sandwiches in an intimate setting.</p>
+      <q-input clearable v-model="username" float-label="Tên Người Dùng" class="q-mb-lg" color="light-green-9"/>
+      <q-input v-model="password" float-label="Mật Khẩu" class="q-mb-lg" color="red-9" type="password"/>
     </q-card-main>
-    <q-card-separator />
-    <q-card-actions>
-      <q-btn flat round dense icon="event" />
-      <q-btn flat label="5:30PM" />
-      <q-btn flat label="7:30PM" />
-      <q-btn flat label="9:00PM" />
-      <q-btn flat color="primary" label="Reserve" />
+    <q-card-actions class="bg-grey-3 row justify-center">
+        <q-btn color="green" label="Sign In" class="q-ma-sm col-10"/>
+        <q-btn color="primary" label="Visit Facebook" class="q-ma-sm col-10"/>
+        <q-btn color="negative" label="Visit Instagram" class="q-ma-sm col-10"/>
     </q-card-actions>
   </q-card>
 </template>
-
 <script type="text/javascript">
-/* eslint-disable */
 import logoData from '../assets/logoData'
-import {Platform} from 'quasar'
 import Vivus from 'vivus'
 export default {
   data() {
     return {
       logo: 'Digitalizer',
       vivus: '',
+      username: '',
+      password: '',
     }
   },
   mounted() {
@@ -67,7 +63,6 @@ export default {
 <style>
 .q-card {
   width: 350px;
-  margin-top: -20px;
 }
 .q-card-media {
   background: url('../assets/bridge.jpg') no-repeat center center;
