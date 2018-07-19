@@ -5,6 +5,9 @@ import mutProduct from './product/mutation'
 import qrySupplier from './supplier/query'
 import mutSupplier from './supplier/mutation'
 
+import qryStockin from './stockin/query'
+import mutStockin from './stockin/mutation'
+
 const query = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'This is the ROOT Query',
@@ -12,6 +15,7 @@ const query = new GraphQLObjectType({
     return {
       ...qryProduct,
       ...qrySupplier,
+      ...qryStockin,
     }
   },
 })
@@ -23,6 +27,7 @@ const mutation = new GraphQLObjectType({
     return {
       ...mutProduct,
       ...mutSupplier,
+      ...mutStockin
     }
   },
 })
