@@ -31,14 +31,72 @@ const Supplier = Conn.define('supplier', {
 })
 
 const Stock = Conn.define('stock', {
-  price: { type: Sequelize.STRING, allowNull: true },
+  price: { type: Sequelize.INTEGER, allowNull: true },
   quantity: { type: Sequelize.INTEGER, allowNull: false }
 })
 
 const StockIn = Conn.define('stockin', {
-  price: { type: Sequelize.STRING, allowNull: true },
-  quantity: { type: Sequelize.INTEGER, allowNull: false }
-})
+  price: { type: Sequelize.INTEGER, allowNull: true },
+  quantity: { type: Sequelize.INTEGER, allowNull: false },
+}, {
+    hooks: {
+      afterCreate: ({ dataValues }, options) => {
+        Stock.findOrCreate({
+          where: {
+            productId: dataValues.productId,
+            price: dataValues.price
+          },
+          defaults: dataValues
+        }).spread((stockin, created) => {
+          if (!created) {
+            Stock.update({ quantity: stockin.get('quantity') + dataValues.quantity }, {
+              where: {
+                id: stockin.get('id')
+              }
+            })
+          }
+        }, {
+            transaction: options.transaction
+          })
+      },
+      afterUpdate: ({ dataValues, _previousDataValues, _changed }, options) => {
+        var changedQuantity = dataValues.quantity - _previousDataValues.quantity
+        if (_changed.quantity) {
+          Stock.findOne({
+            where: {
+              productId: _previousDataValues.productId,
+              price: _previousDataValues.price
+            }
+          }, {
+              transaction: options.transaction
+            }).then(stockin => {
+              Stock.update({ quantity: stockin.get('quantity') + changedQuantity }, {
+                where: {
+                  id: stockin.get('id')
+                }
+              })
+            })
+        }
+      },
+      afterDestroy: ({ dataValues }, options) => {
+        Stock.findOne({
+          where: {
+            productId: dataValues.productId,
+            price: dataValues.price
+          }
+        }, {
+            transaction: options.transaction
+          }).then(stockin => {
+            return Stock.decrement('quantity', {
+              where: {
+                id: stockin.get('id')
+              }, by: dataValues.quantity
+            })
+          })
+      }
+    }
+  })
+
 
 StockIn.belongsTo(Product, {
   foreignKey: 'productId'
@@ -55,7 +113,8 @@ Stock.belongsTo(Product, {
 // Generating demo Data
 import _d from 'lodash'
 import Faker from 'faker'
-Conn.sync({force: true}).then(() => {
+import { create } from 'domain';
+Conn.sync({ force: true }).then(() => {
   console.log('DB Structure created ...')
   _d.times(100, () => {
     return Product.create({

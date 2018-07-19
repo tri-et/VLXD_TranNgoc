@@ -43,7 +43,7 @@
 </style>
 
 <script>
-import {mapState, mapActions, mapMutations} from 'vuex'
+import {mapState, mapActions, mapMutations, mapGetters} from 'vuex'
 
 export default {
   props: {
@@ -65,6 +65,8 @@ export default {
   },
   computed: {
     // ...mapGetters('product', ['getRecs', 'getCols', 'getIsLoading', 'getTitle']),
+    ...mapGetters('product', {getRecsProduct: 'getRecs'}),
+    ...mapGetters('supplier', {getRecsSuplier: 'getRecs'}),
     ...mapState({
       getRecs(state, getters) {
         return getters[this.type + '/getRecs']
@@ -102,7 +104,7 @@ export default {
     }),
     ...mapMutations({
       setEditingRec(dispatch, payload) {
-        if (this.type === 'stockin') {
+        if (this.type === 'stockin' && (this.getRecsProduct.length === 0 || this.getRecsSuplier.length === 0)) {
           this.fetchRecsProduct()
           this.fetchRecsSupplier()
         }
