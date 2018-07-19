@@ -11,17 +11,17 @@ export default [
   {
     path: '/',
     component: defaultLayout,
-    meta: {requiresAuth: true},
+    // meta: {requiresAuth: true},
     children: [
       {
         path: 'products',
         component: pgProducts,
-        meta: {requiresAuth: true},
+        // meta: {requiresAuth: true},
       },
       {
         path: 'suppliers',
         component: pgSuppliers,
-        meta: {requiresAuth: true},
+        // meta: {requiresAuth: true},
       },
     ],
   },

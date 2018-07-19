@@ -1,6 +1,6 @@
 import Express from 'express'
-import GraphHttp from 'express-graphql'
-// import {graphqlExpress as GraphHttp} from 'apollo-server-express'
+// import GraphHttp from 'express-graphql'
+import {graphqlExpress, graphiqlExpress} from 'apollo-server-express'
 import ServeStatic from 'serve-static'
 import bodyParser from 'body-parser'
 import schema from './schema'
@@ -12,11 +12,11 @@ app.use(ServeStatic(__dirname))
 app.use(
   '/api',
   bodyParser.json(),
-  GraphHttp({
+  graphqlExpress({
     schema,
-    graphiql: true,
   })
 )
+app.use('/graphiql', graphiqlExpress({endpointURL: 'api'}))
 
 app.listen(process.env.PORT || APP_PORT, () => {
   console.log(`VLXD_API listening on port ${APP_PORT} ...`)

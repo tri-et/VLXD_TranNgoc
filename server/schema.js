@@ -31,11 +31,14 @@ const mutation = new GraphQLObjectType({
 })
 
 import {makeExecutableSchema} from 'graphql-tools'
-import defUser from './user/def'
-import resUser from './user/res'
+import userDef from './user/def'
+import userRes from './user/res'
 
-import defUser1 from './user1/def'
-import resUser1 from './user1/res'
+import user1Def from './user1/def'
+import user1Res from './user1/res'
+
+import productDef from './product/def'
+import productRes from './product/res'
 
 const RootQuery = `
   type RootQuery {
@@ -44,6 +47,8 @@ const RootQuery = `
 
     getUser1: User1
     listUser1: [User1]
+
+    listProduct: [Product]
   }
 `
 const SchemaDefinition = `
@@ -52,8 +57,8 @@ const SchemaDefinition = `
   }
 `
 export default makeExecutableSchema({
-  typeDefs: [SchemaDefinition, RootQuery, defUser, defUser1],
-  resolvers: [resUser, resUser1],
+  typeDefs: [SchemaDefinition, RootQuery, userDef, user1Def, productDef],
+  resolvers: [userRes, user1Res, productRes],
 })
 
 // const SCHEMA = new GraphQLSchema({
