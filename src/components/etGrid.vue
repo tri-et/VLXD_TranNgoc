@@ -1,47 +1,21 @@
 <template>
-  <q-table
-    :data="getRecs"
-    :columns="getCols"
-    :filter="filter"
-    :rows-per-page-options="[15,20,25,50,0]"
-    :loading="getIsLoading"
-    :pagination.sync="pagination"
-    :selected-rows-label="selectedLabel"
-    :selected.sync="selected"
-    selection="multiple"
-    table-class="et-grid"
-    dense
-    row-key="id"
-    color="purple"
-    separator="cell"
-    no-results-label="Không tìm thấy kết quả nào ..."
-    rows-per-page-label="Hiện"
-  >
+  <q-table :data="getRecs" :columns="getCols" :filter="filter" :rows-per-page-options="[15,20,25,50,0]" :loading="getIsLoading" :pagination.sync="pagination" :selected-rows-label="selectedLabel" :selected.sync="selected" selection="multiple" table-class="et-grid" dense row-key="id" color="purple" separator="cell" no-results-label="Không tìm thấy kết quả nào ..." rows-per-page-label="Hiện">
     <template slot="top-left" slot-scope="props">
       <q-btn :loading="getIsLoading" color="primary" @click="fetchRecs" class="q-mr-sm">
-        <q-icon name="refresh" size="25px"/>
-        <q-spinner-pie slot="loading" size="25px"/>
+        <q-icon name="refresh" size="25px" />
+        <q-spinner-pie slot="loading" size="25px" />
       </q-btn>
       <q-btn wait-for-ripple :disabled="getIsLoading" color="green" @click="setEditingRec({})" class="q-mr-sm">
-        <q-icon name="add" size="25px"/>
+        <q-icon name="add" size="25px" />
       </q-btn>
-      <q-icon :name="getIcon" size="25px"/><cite>{{getTitle}}</cite>
+      <q-icon :name="getIcon" size="25px" />
+      <cite>{{getTitle}}</cite>
     </template>
     <template slot="top-right" slot-scope="props">
       <div style="width:300px" class="q-mr-sm">
-        <q-search
-          v-model="filter"
-          :clearable="true"
-          placeholder="Tìm kiếm ..."
-          color="blue"
-          inverted
-        />
+        <q-search v-model="filter" :clearable="true" placeholder="Tìm kiếm ..." color="blue" inverted />
       </div>
-      <q-btn
-        flat round dense
-        :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
-        @click="props.toggleFullscreen"
-      />
+      <q-btn flat round dense :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'" @click="props.toggleFullscreen" />
     </template>
 
     <!-- slot name syntax: body-cell-<column_name> -->
@@ -52,12 +26,14 @@
 
     <!-- gets displayed only when there's at least one row selected -->
     <template slot="top-selection" slot-scope="props">
-      <div class="q-table-control">  <!-- wrap with div.q-table-control to fix jumpimg padding-->
+      <div class="q-table-control">
+        <!-- wrap with div.q-table-control to fix jumpimg padding-->
         <q-btn :loading="getIsLoading" color="red" style="margin-right:5px" @click="deleteRecs">
-          <q-icon name="delete" size="25px"/>
-          <q-spinner-pie slot="loading" size="25px"/>
+          <q-icon name="delete" size="25px" />
+          <q-spinner-pie slot="loading" size="25px" />
         </q-btn>
-        <q-icon :name="getIcon" size="25px"/><cite>{{getTitle}}</cite>
+        <q-icon :name="getIcon" size="25px" />
+        <cite>{{getTitle}}</cite>
       </div>
     </template>
   </q-table>
@@ -67,7 +43,7 @@
 </style>
 
 <script>
-import {mapState, mapActions, mapMutations} from 'vuex'
+import {mapState, mapActions, mapMutations, mapGetters} from 'vuex'
 
 export default {
   props: {
@@ -89,6 +65,8 @@ export default {
   },
   computed: {
     // ...mapGetters('product', ['getRecs', 'getCols', 'getIsLoading', 'getTitle']),
+    ...mapGetters('product', {getRecsProduct: 'getRecs'}),
+    ...mapGetters('supplier', {getRecsSuplier: 'getRecs'}),
     ...mapState({
       getRecs(state, getters) {
         return getters[this.type + '/getRecs']
@@ -117,6 +95,8 @@ export default {
   },
   methods: {
     // ...mapActions('product', ['fetchRecs', 'deleteRecs']),
+    ...mapActions('product', {fetchRecsProduct: 'fetchRecs'}),
+    ...mapActions('supplier', {fetchRecsSupplier: 'fetchRecs'}),
     ...mapActions({
       fetchRecs(dispatch, payload) {
         return dispatch(this.type + '/fetchRecs', payload)
@@ -127,6 +107,10 @@ export default {
     }),
     ...mapMutations({
       setEditingRec(dispatch, payload) {
+        if (this.type === 'stockin' && (this.getRecsProduct.length === 0 || this.getRecsSuplier.length === 0)) {
+          this.fetchRecsProduct()
+          this.fetchRecsSupplier()
+        }
         return dispatch(this.type + '/setEditingRec', payload)
       },
     }),

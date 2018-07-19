@@ -1,9 +1,12 @@
-import {GraphQLSchema, GraphQLObjectType} from 'graphql'
+import { GraphQLSchema, GraphQLObjectType } from 'graphql'
 import qryProduct from './product/query'
 import mutProduct from './product/mutation'
 
 import qrySupplier from './supplier/query'
 import mutSupplier from './supplier/mutation'
+
+import qryStockin from './stockin/query'
+import mutStockin from './stockin/mutation'
 
 const query = new GraphQLObjectType({
   name: 'RootQuery',
@@ -12,6 +15,7 @@ const query = new GraphQLObjectType({
     return {
       ...qryProduct,
       ...qrySupplier,
+      ...qryStockin,
     }
   },
 })
@@ -23,6 +27,7 @@ const mutation = new GraphQLObjectType({
     return {
       ...mutProduct,
       ...mutSupplier,
+      ...mutStockin,
     }
   },
 })
