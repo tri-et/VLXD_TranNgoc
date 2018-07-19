@@ -26,7 +26,7 @@ export const Stockin = new GraphQLObjectType({
         },
       },
       price: {
-        type: GraphQLString,
+        type: GraphQLInt,
         resolve(stockin) {
           return stockin.price
         },
@@ -68,7 +68,7 @@ export const StockinInput = new GraphQLInputObjectType({
       type: new GraphQLNonNull(GraphQLInt),
     },
     price: {
-      type: GraphQLString,
+      type: GraphQLInt,
     },
     quantity: {
       type: GraphQLInt,

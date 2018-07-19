@@ -16,15 +16,15 @@
             <q-input v-model="getEditingRec[field.name]" :type="field.type" color="orange-10" />
           </q-field> -->
                 <q-field class="q-mb-md" label="Tên Sản Phẩm" label-width="3" icon="outlined_flag" error-label="Some error">
-                    <q-select filter v-model="getEditingRec.productId" :options="getRecs.map(opt => ({label: opt.name, value: opt.id}))" />
+                    <q-select filter v-model="getEditingRec.productId" :options="getRecsProduct.map(opt => ({label: opt.name, value: opt.id}))" />
                 </q-field>
-                <q-field class="q-mb-md" label="Tên Nhà Cung Cấp" label-width="3" icon="import_contacts" error-label="Some error">
+                <q-field class="q-mb-md" label="Tên Nhà Cung Cấp" label-width="3" icon="store" error-label="Some error">
                     <q-select filter v-model="getEditingRec.supplierId" :options="getRecsSuplier.map(opt => ({label: opt.name, value: opt.id}))" />
                 </q-field>
-                <q-field class="q-mb-md" label="Giá Tham Khảo" label-width="3" icon="import_contacts" error-label="Some error">
+                <q-field class="q-mb-md" label="Giá Tham Khảo" label-width="3" icon="attach_money" error-label="Some error">
                     <q-input v-model="getEditingRec.price" type="text" color="orange-10" />
                 </q-field>
-                <q-field class="q-mb-md" label="Số Lượng" label-width="3" icon="import_contacts" error-label="Some error">
+                <q-field class="q-mb-md" label="Số Lượng" label-width="3" icon="exposure_plus_1" error-label="Some error">
                     <q-input v-model="getEditingRec.quantity" type="text" color="orange-10" />
                 </q-field>
             </div>
@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     // ...mapGetters('product', ['getFields', 'getEditingRec']),
-    ...mapGetters('product', ['getRecs']),
+    ...mapGetters('product', {getRecsProduct: 'getRecs'}),
     ...mapGetters('supplier', {getRecsSuplier: 'getRecs'}),
     ...mapState({
       getIsLoading(state, getters) {
