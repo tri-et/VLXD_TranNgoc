@@ -103,12 +103,6 @@ export default {
         return dispatch(this.type + '/discardEditingRec', payload)
       },
     }),
-    ...mapActions('product', ['fetchRecs']),
-    ...mapActions('supplier', {fetchRecsSupplier: 'fetchRecs'}),
-  },
-  mounted() {
-    this.fetchRecs()
-    this.fetchRecsSupplier()
   },
 }
 </script>

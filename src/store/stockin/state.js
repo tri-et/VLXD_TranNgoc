@@ -6,6 +6,7 @@ export default {
   backupRec: {},
   selected: [],
   recs: [],
+  icon: 'archive',
   cols: [
     {
       name: 'edit',
@@ -14,17 +15,17 @@ export default {
       width: '34px',
     },
     {
-      name: 'productId',
+      name: 'productName',
       label: 'Tên Sản Phẩm',
       align: 'left',
-      field: 'productId',
+      field: 'productName',
       sortable: true,
     },
     {
-      name: 'supplierId',
+      name: 'supplierName',
       label: 'Tên Nhà Cung Cấp',
       align: 'left',
-      field: 'supplierId',
+      field: 'supplierName',
       sortable: true,
     },
     {
@@ -40,36 +41,6 @@ export default {
       align: 'left',
       field: 'quantity',
       sortable: true,
-    },
-  ],
-  fields: [
-    {
-      name: 'id',
-      hidden: true,
-    },
-    {
-      name: 'taxcode',
-      label: 'Tên Nhà Cung Cấp',
-      type: 'text',
-      icon: 'outlined_flag',
-    },
-    {
-      name: 'name',
-      label: 'Tên Nhà Cung Cấp',
-      type: 'text',
-      icon: 'import_contacts',
-    },
-    {
-      name: 'address',
-      label: 'Địa Chỉ',
-      type: 'text',
-      icon: 'store',
-    },
-    {
-      name: 'phone',
-      label: 'Số Điện Thoại',
-      type: 'text',
-      icon: 'contact_phone',
     },
   ],
 }

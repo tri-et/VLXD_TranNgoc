@@ -17,10 +17,10 @@ const Conn = new Sequelize('vlxd', 'root', 'admin123', {
 })
 // eslint-disable-next-line no-unused-vars
 const Product = Conn.define('product', {
-  code: {type: Sequelize.STRING, allowNull: false},
-  name: {type: Sequelize.STRING, allowNull: false},
-  unit: {type: Sequelize.STRING, allowNull: true},
-  listingPrice: {type: Sequelize.INTEGER, allowNull: true},
+  code: { type: Sequelize.STRING, allowNull: false },
+  name: { type: Sequelize.STRING, allowNull: false },
+  unit: { type: Sequelize.STRING, allowNull: true },
+  listingPrice: { type: Sequelize.INTEGER, allowNull: true },
 })
 
 const Supplier = Conn.define('supplier', {
@@ -30,39 +30,54 @@ const Supplier = Conn.define('supplier', {
   phone: { type: Sequelize.STRING, allowNull: true },
 })
 
-const StockIn = Conn.define('stockin', {
-  productId: { type: Sequelize.INTEGER, allowNull: false },
-  supplierId: { type: Sequelize.INTEGER, allowNull: false },
+const Stock = Conn.define('stock', {
   price: { type: Sequelize.STRING, allowNull: true },
   quantity: { type: Sequelize.INTEGER, allowNull: false }
 })
 
-// Generating demo Data
-// import _d from 'lodash'
-// import Faker from 'faker'
-// Conn.sync({force: true}).then(() => {
-//   console.log('DB Structure created ...')
-//   _d.times(100, () => {
-//     return Product.create({
-//       code: Faker.address.countryCode(),
-//       name: Faker.commerce.productName(),
-//       unit: Faker.commerce.productMaterial(),
-//       listingPrice: Faker.commerce.price(),
-//     })
-//   })
-// })
+const StockIn = Conn.define('stockin', {
+  price: { type: Sequelize.STRING, allowNull: true },
+  quantity: { type: Sequelize.INTEGER, allowNull: false }
+})
 
-// Conn.sync({ force: true }).then(() => {
-//   console.log('DB Structure created ...')
-//   _d.times(100, () => {
-//     return Supplier.create({
-//       taxcode: Faker.address.countryCode(),
-//       name: Faker.commerce.productName(),
-//       address: Faker.address.streetAddress(),
-//       phone: Faker.phone.phoneNumber(),
-//     })
-//   })
-// })
+StockIn.belongsTo(Product, {
+  foreignKey: 'productId'
+})
+
+StockIn.belongsTo(Supplier, {
+  foreignKey: 'supplierId'
+})
+
+Stock.belongsTo(Product, {
+  foreignKey: 'productId'
+})
+
+// Generating demo Data
+import _d from 'lodash'
+import Faker from 'faker'
+Conn.sync({force: true}).then(() => {
+  console.log('DB Structure created ...')
+  _d.times(100, () => {
+    return Product.create({
+      code: Faker.address.countryCode(),
+      name: Faker.commerce.productName(),
+      unit: Faker.commerce.productMaterial(),
+      listingPrice: Faker.commerce.price(),
+    })
+  })
+})
+
+Conn.sync({ force: true }).then(() => {
+  console.log('DB Structure created ...')
+  _d.times(100, () => {
+    return Supplier.create({
+      taxcode: Faker.address.countryCode(),
+      name: Faker.commerce.productName(),
+      address: Faker.address.streetAddress(),
+      phone: Faker.phone.phoneNumber(),
+    })
+  })
+})
 
 Conn.authenticate()
 export default Conn

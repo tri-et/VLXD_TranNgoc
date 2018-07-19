@@ -13,14 +13,14 @@ export const Stockin = new GraphQLObjectType({
         },
       },
       productId: {
-        type: GraphQLString,
+        type: GraphQLInt,
         description: 'This code should be controlled by user.',
         resolve(stockin) {
           return stockin.productId
         },
       },
       supplierId: {
-        type: GraphQLString,
+        type: GraphQLInt,
         resolve(stockin) {
           return stockin.supplierId
         },
@@ -32,9 +32,21 @@ export const Stockin = new GraphQLObjectType({
         },
       },
       quantity: {
-        type: GraphQLString,
+        type: GraphQLInt,
         resolve(stockin) {
           return stockin.quantity
+        },
+      },
+      productName: {
+        type: GraphQLString,
+        resolve(stockin) {
+          return stockin.product.get('productname')
+        },
+      },
+      supplierName: {
+        type: GraphQLString,
+        resolve(stockin) {
+          return stockin.supplier.get('suppliername')
         },
       },
     }
@@ -60,6 +72,12 @@ export const StockinInput = new GraphQLInputObjectType({
     },
     quantity: {
       type: GraphQLInt,
+    },
+    productName: {
+      type: GraphQLString,
+    },
+    supplierName: {
+      type: GraphQLString,
     },
   }),
 })
