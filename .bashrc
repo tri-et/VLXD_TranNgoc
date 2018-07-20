@@ -18,6 +18,10 @@ dev() {
   npm run dev
 }
 
+api() {
+  npm run api
+}
+
 gendb() {
   cd server
   npx babel-node db

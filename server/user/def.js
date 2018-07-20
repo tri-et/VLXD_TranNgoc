@@ -1,6 +1,7 @@
 const User = `
   type User {
-    username: String!
+    id: Int
+    username: String
     password: String
     roles: String
   }

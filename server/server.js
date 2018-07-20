@@ -4,6 +4,7 @@ import {graphqlExpress, graphiqlExpress} from 'apollo-server-express'
 import ServeStatic from 'serve-static'
 import bodyParser from 'body-parser'
 import schema from './schema'
+require('dotenv').config()
 
 const APP_PORT = 8888
 const app = Express()
