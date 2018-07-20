@@ -31,3 +31,15 @@ rundb() {
   cd server
   npx babel-node server
 }
+
+migrate() {
+  cd server
+  sequelize db:migrate
+  cd ..
+}
+
+seed() {
+  cd server
+  sequelize db:seed:all
+  cd ..
+}
