@@ -1,16 +1,9 @@
-import db from '../db'
+import {user} from '../models'
 
 const resolvers = {
   RootQuery: {
-    async getUser(_, args, {user}) {
-      if (!user) {
-        throw new Error('You are not authorized!')
-      }
-
-      return await db.models.user.findById(user.id)
-    },
     async listUser() {
-      return await db.models.user.findAll()
+      return await user.findAll()
     },
   },
 }
