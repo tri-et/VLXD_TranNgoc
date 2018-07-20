@@ -1,9 +1,9 @@
-import {user} from '../models'
+import {User} from '../models'
 
 const resolvers = {
   RootQuery: {
     async listUser() {
-      return await user.findAll()
+      return await User.findAll()
     },
   },
 }

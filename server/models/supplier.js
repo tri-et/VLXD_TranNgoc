@@ -1,7 +1,7 @@
 'use strict'
 module.exports = (sequelize, DataTypes) => {
-  var supplier = sequelize.define(
-    'supplier',
+  var Supplier = sequelize.define(
+    'Supplier',
     {
       taxCode: DataTypes.STRING,
       name: DataTypes.STRING,
@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   )
-  supplier.associate = function(models) {
+  Supplier.associate = function(models) {
     // associations can be defined here
   }
-  return supplier
+  return Supplier
 }

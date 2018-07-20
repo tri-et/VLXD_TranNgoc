@@ -1,16 +1,16 @@
-import {product} from '../models'
+import {Product} from '../models'
 import Sequelize from 'sequelize'
 const Op = Sequelize.Op
 
 const resolvers = {
   RootQuery: {
     async listProduct() {
-      return await product.all()
+      return await Product.all()
     },
   },
   RootMutation: {
     async deleteProduct(_, {input}) {
-      return await product.destroy({
+      return await Product.destroy({
         where: {
           id: {
             [Op.in]: input,
@@ -19,7 +19,7 @@ const resolvers = {
       })
     },
     async updateProduct(_, {input}) {
-      return await product.upsert(input).then(() => {
+      return await Product.upsert(input).then(() => {
         return input
       })
     },
