@@ -7,7 +7,7 @@ export const fetchRecs = ({commit}) => {
     listSupplier {
       id
       name
-      taxcode
+      taxCode
       address
       phone
     }
@@ -59,7 +59,7 @@ export const updateRec = ({commit, getters}) => {
     `mutation ($input: SupplierInput) {
       updateSupplier(input: $input) {
         id
-        taxcode
+        taxCode
         name
         address
         phone

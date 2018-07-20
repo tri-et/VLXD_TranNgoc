@@ -5,7 +5,7 @@ const Faker = require('faker')
 var data = []
 _d.times(10, () => {
   data.push({
-    taxcode: Faker.address.countryCode(),
+    taxCode: Faker.address.countryCode(),
     name: Faker.commerce.productName(),
     address: Faker.address.streetAddress(),
     phone: Faker.phone.phoneNumber(),
