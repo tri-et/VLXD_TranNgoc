@@ -32,9 +32,9 @@
           <q-item-side icon="archive" />
           <q-item-main label="Nhập Kho" sublabel="Liệt Kê & Tìm Kiếm Nhập Kho" />
         </q-item>
-        <q-item @click.native="openURL('http://forum.quasar-framework.org')">
-          <q-item-side icon="record_voice_over" />
-          <q-item-main label="Forum" sublabel="forum.quasar-framework.org" />
+        <q-item to="/stocks">
+          <q-item-side icon="account_balance" />
+          <q-item-main label="Tồn Kho" sublabel="Liệt Kê & Tìm Kiếm Tồn Kho" />
         </q-item>
         <q-item @click.native="openURL('https://twitter.com/quasarframework')">
           <q-item-side icon="rss feed" />

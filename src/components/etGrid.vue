@@ -1,11 +1,11 @@
 <template>
-  <q-table :data="getRecs" :columns="getCols" :filter="filter" :rows-per-page-options="[15,20,25,50,0]" :loading="getIsLoading" :pagination.sync="pagination" :selected-rows-label="selectedLabel" :selected.sync="selected" selection="multiple" table-class="et-grid" dense row-key="id" color="purple" separator="cell" no-results-label="Không tìm thấy kết quả nào ..." rows-per-page-label="Hiện">
+  <q-table :data="getRecs" :columns="getCols" :filter="filter" :rows-per-page-options="[15,20,25,50,0]" :loading="getIsLoading" :pagination.sync="pagination" :selected-rows-label="selectedLabel" :selected.sync="selected" :selection="type!='stock'?'multiple':'none'" table-class="et-grid" dense row-key="id" color="purple" separator="cell" no-results-label="Không tìm thấy kết quả nào ..." rows-per-page-label="Hiện">
     <template slot="top-left" slot-scope="props">
       <q-btn :loading="getIsLoading" color="primary" @click="fetchRecs" class="q-mr-sm">
         <q-icon name="refresh" size="25px" />
         <q-spinner-pie slot="loading" size="25px" />
       </q-btn>
-      <q-btn wait-for-ripple :disabled="getIsLoading" color="green" @click="setEditingRec({})" class="q-mr-sm">
+      <q-btn wait-for-ripple :disabled="getIsLoading"  color="green" @click="setEditingRec({})" class="q-mr-sm" :class="{'q-hide':type=='stock'}">
         <q-icon name="add" size="25px" />
       </q-btn>
       <q-icon :name="getIcon" size="25px" />
@@ -135,5 +135,8 @@ export default {
 
 .q-pa-none {
   padding: 0 !important;
+}
+.q-hide{
+  display: none;
 }
 </style>
