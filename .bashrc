@@ -22,16 +22,6 @@ api() {
   npm run api
 }
 
-gendb() {
-  cd server
-  npx babel-node db
-}
-
-rundb() {
-  cd server
-  npx babel-node server
-}
-
 migrate() {
   cd server
   sequelize db:migrate
