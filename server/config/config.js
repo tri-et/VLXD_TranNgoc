@@ -1,5 +1,11 @@
 'use strict'
 require('dotenv').config()
+var Sequelize = require('sequelize')
+const Op = Sequelize.Op
+var aliases = {
+  $in: Op.in,
+  $gt: Op.gt,
+}
 
 module.exports = {
   development: {
@@ -8,6 +14,14 @@ module.exports = {
     database: process.env.DEV_DB_NAME,
     host: process.env.DEV_DB_HOST,
     dialect: 'mysql',
+    operatorsAliases: aliases,
+    pool: {
+      port: 3306,
+      max: 5,
+      min: 1,
+      accquire: 60000,
+      idle: 20000,
+    },
   },
   production: {
     username: process.env.DB_USERNAME,
@@ -15,5 +29,13 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    operatorsAliases: aliases,
+    pool: {
+      port: 3306,
+      max: 5,
+      min: 1,
+      accquire: 60000,
+      idle: 20000,
+    },
   },
 }
