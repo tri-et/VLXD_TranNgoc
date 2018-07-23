@@ -16,7 +16,7 @@
       <q-input v-model="password" float-label="Mật Khẩu" class="q-mb-lg" color="red-9" type="password"/>
     </q-card-main>
     <q-card-actions class="bg-grey-3 row justify-center">
-        <q-btn color="green" label="Sign In" class="q-ma-sm col-10"/>
+        <q-btn color="green" label="Sign In" class="q-ma-sm col-10" @click="loginUser({username,password})"/>
         <q-btn color="primary" label="Visit Facebook" class="q-ma-sm col-10"/>
         <q-btn color="negative" label="Visit Instagram" class="q-ma-sm col-10"/>
     </q-card-actions>
@@ -25,6 +25,7 @@
 <script type="text/javascript">
 import logoData from '../assets/logoData'
 import Vivus from 'vivus'
+import {mapActions} from 'vuex'
 export default {
   data() {
     return {
@@ -43,6 +44,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions('user', ['loginUser']),
     startAnimation() {
       this.vivus = new Vivus(
         'logo',

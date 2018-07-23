@@ -1,4 +1,5 @@
 const User = `
+  scalar Date
   type User {
     id: Int
     username: String
@@ -12,6 +13,9 @@ const User = `
     password: String
     roles: String!
   }
-  scalar Date
+  input LoginInput {
+    username: String!
+    password: String!
+  }
 `
 export default User
