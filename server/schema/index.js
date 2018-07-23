@@ -27,14 +27,17 @@ const RootQuery = `
 
 const RootMutation = `
   type RootMutation {
+    login(input:LoginInput): String
+    deleteUser(input:[Int]): Int
+    createUser(input:UserInput): User
+    updateUser(input:UserInput): User
+
     deleteProduct(input:[Int]): Int
     updateProduct(input:ProductInput): Product
 
     deleteSupplier(input:[Int]): Int
     updateSupplier(input:SupplierInput): Supplier
 
-    createUser(input:UserInput): User
-    updateUser(input:UserInput): User
   }
 `
 

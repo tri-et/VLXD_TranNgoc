@@ -23,6 +23,22 @@ export const fetchRecs = ({commit}) => {
       commit('setIsLoading', false)
     })
 }
+export const loginUser = ({commit}, payload) => {
+  _post(
+    payload,
+    `mutation ($input: LoginInput) {
+      login(input: $input)
+    }`
+  )
+    .then(({data}) => {
+      if (!data.login) _alert('Fail!', 'negative')
+      else _alert(`Đăng Nhập Thành Công: ${data.login}`, 'positive')
+    })
+    .catch(err => {
+      console.log(JSON.stringify(err))
+      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+    })
+}
 
 export const deleteRecs = ({commit, getters}) => {
   commit('setIsLoading', true)
