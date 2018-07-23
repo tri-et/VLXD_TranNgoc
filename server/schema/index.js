@@ -32,6 +32,9 @@ const RootMutation = `
 
     deleteSupplier(input:[Int]): Int
     updateSupplier(input:SupplierInput): Supplier
+
+    createUser(input:UserInput): User
+    updateUser(input:UserInput): User
   }
 `
 
