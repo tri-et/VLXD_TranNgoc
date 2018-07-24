@@ -7,6 +7,7 @@ export default {
   selected: [],
   recs: [],
   icon: 'archive',
+  isSuccess: false,
   cols: [
     {
       name: 'edit',

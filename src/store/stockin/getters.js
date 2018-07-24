@@ -33,3 +33,7 @@ export const getEditingRec = state => {
 export const getIcon = state => {
   return state.icon
 }
+
+export const getIsSuccess = state => {
+  return state.isSuccess
+}

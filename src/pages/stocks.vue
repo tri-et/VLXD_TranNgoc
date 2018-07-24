@@ -1,6 +1,6 @@
 <template>
   <div>
-    <et-grid type="stock"></et-grid>
+    <et-grid type="stock" hideSelection hideAdd></et-grid>
   </div>
 </template>
 
