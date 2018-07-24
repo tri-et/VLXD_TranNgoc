@@ -5,7 +5,8 @@ const _ax = axios.create({
   timeout: 20000,
   // remove the abundant "data" key from grahql response
   transformResponse: axios.defaults.transformResponse.concat(data => {
-    return data.data
+    if (Object.keys(data).length === 1) return data.data
+    else return data // keep all data properties
   }),
 })
 

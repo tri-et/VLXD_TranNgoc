@@ -31,7 +31,7 @@ export const loginUser = ({commit}, payload) => {
     }`
   )
     .then(({data}) => {
-      if (!data.login) _alert('Fail!', 'negative')
+      if (data.errors) _alert(data.errors[0].message, 'negative')
       else _alert(`Đăng Nhập Thành Công: ${data.login}`, 'positive')
     })
     .catch(err => {
