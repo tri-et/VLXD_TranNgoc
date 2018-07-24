@@ -1,5 +1,9 @@
 import _d from 'lodash'
 
+export const setToken = (state, payload) => {
+  state.token = payload
+}
+
 export const setRecs = (state, payload) => {
   state.recs = payload
 }

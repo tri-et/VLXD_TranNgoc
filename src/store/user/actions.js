@@ -1,5 +1,6 @@
-import {_get, _post, _alert} from '../../util/common'
+import {_ax, _get, _post, _alert} from '../../util/common'
 import _d from 'lodash'
+import router from '../../router'
 
 export const fetchRecs = ({commit}) => {
   commit('setIsLoading', true)
@@ -18,7 +19,6 @@ export const fetchRecs = ({commit}) => {
       commit('setIsLoading', false)
     })
     .catch(err => {
-      console.log(JSON.stringify(err))
       _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
       commit('setIsLoading', false)
     })
@@ -32,10 +32,16 @@ export const loginUser = ({commit}, payload) => {
   )
     .then(({data}) => {
       if (data.errors) _alert(data.errors[0].message, 'negative')
-      else _alert(`Đăng Nhập Thành Công: ${data.login}`, 'positive')
+      else {
+        // Login successfully
+        localStorage.setItem('auth-token', data.login)
+        commit('setToken', data.login)
+        _ax.defaults.headers.common['Authorization'] = 'Bearer ' + data.login
+        _alert(`Đăng Nhập Thành Công: ${data.login}`, 'positive')
+        router.push('/')
+      }
     })
     .catch(err => {
-      console.log(JSON.stringify(err))
       _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
     })
 }
@@ -89,7 +95,6 @@ export const updateRec = ({commit, getters}) => {
         commit('setIsModalOpened', false)
       })
       .catch(err => {
-        console.log(JSON.stringify(err))
         _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
         commit('setIsLoading', false)
       })
@@ -110,7 +115,6 @@ export const updateRec = ({commit, getters}) => {
         commit('setIsModalOpened', false)
       })
       .catch(err => {
-        console.log(JSON.stringify(err))
         _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
         commit('setIsLoading', false)
       })

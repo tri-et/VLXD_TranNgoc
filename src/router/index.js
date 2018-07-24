@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import routes from './routes'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -21,17 +22,15 @@ const Router = new VueRouter({
   routes,
 })
 
-let isAuth = false
-
 Router.beforeEach((to, _, next) => {
   // next({path: '/', name: 'login'})
   console.log(to.matched)
-
+  console.log(store.getters['user/getIsAuth'])
   if (to.meta.requiresAuth) {
-    if (isAuth) next()
+    if (store.getters['user/getIsAuth']) next()
     else next('/login')
   } else {
-    if (to.path === '/login' && isAuth) next('/')
+    if (to.path === '/login' && store.getters['user/getIsAuth']) next('/')
     else next()
   }
 })
