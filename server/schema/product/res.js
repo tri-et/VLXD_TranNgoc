@@ -2,7 +2,10 @@ import {Product} from '../../models'
 
 const resolvers = {
   RootQuery: {
-    async listProduct() {
+    async listProduct(_, __, {authUser}) {
+      if (!authUser) {
+        throw new Error('You are not authenticated!')
+      }
       return await Product.all()
     },
   },

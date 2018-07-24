@@ -1,6 +1,4 @@
-export const getIsLoggedIn = state => {
-  return state.isLoggedIn
-}
+export const getIsAuth = state => !!state.token
 
 export const getRecs = state => {
   return state.recs

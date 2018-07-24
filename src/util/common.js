@@ -1,6 +1,9 @@
 import axios from 'axios'
 import {Notify} from 'quasar'
 
+// get auth token, to make sure all _get _post require got auth-token attached
+const token = localStorage.getItem('auth-token')
+
 const _ax = axios.create({
   timeout: 20000,
   // remove the abundant "data" key from grahql response
@@ -9,6 +12,9 @@ const _ax = axios.create({
     else return data // keep all data properties
   }),
 })
+if (token) {
+  _ax.defaults.headers.common['Authorization'] = 'Bearer ' + token
+}
 
 const _get = query =>
   _ax.get('/api', {

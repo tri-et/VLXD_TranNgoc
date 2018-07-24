@@ -28,7 +28,7 @@ export default [
       {
         path: 'users',
         component: pgUsers,
-        // meta: {requiresAuth: true},
+        meta: {requiresAuth: true},
       },
     ],
   },

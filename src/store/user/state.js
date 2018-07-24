@@ -1,5 +1,6 @@
 export default {
-  isLoggedIn: false,
+  isAuth: false,
+  token: localStorage.getItem('auth-token') || '',
   name: '',
   role: '',
   title: `Thông Tin Tài Khoản Đăng Nhập`,

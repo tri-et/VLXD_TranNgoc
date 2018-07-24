@@ -18,7 +18,6 @@ export const fetchRecs = ({commit}) => {
       commit('setIsLoading', false)
     })
     .catch(err => {
-      console.log(err)
       _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
       commit('setIsLoading', false)
     })
