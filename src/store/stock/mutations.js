@@ -27,7 +27,3 @@ export const discardEditingRec = state => {
 export const setIsModalOpened = (state, payload) => {
   state.isModalOpened = payload
 }
-
-export const setIsSuccess = (state, payload) => {
-  state.isSuccess = payload
-}

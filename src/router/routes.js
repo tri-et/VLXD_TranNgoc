@@ -3,6 +3,7 @@ import defaultLayout from 'layouts/default'
 import pgProducts from 'pages/products'
 import pgSuppliers from 'pages/suppliers'
 import pgStockins from 'pages/stockins'
+import pgStocks from 'pages/stocks'
 export default [
   {
     path: '/',
@@ -19,6 +20,10 @@ export default [
       {
         path: 'stockins',
         component: pgStockins,
+      },
+      {
+        path: 'stocks',
+        component: pgStocks,
       },
     ],
   },

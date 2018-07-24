@@ -6,27 +6,13 @@ export default {
   backupRec: {},
   selected: [],
   recs: [],
-  icon: 'archive',
-  isSuccess: false,
+  icon: 'account_balance',
   cols: [
-    {
-      name: 'edit',
-      align: 'left',
-      field: 'edit',
-      width: '34px',
-    },
     {
       name: 'productName',
       label: 'Tên Sản Phẩm',
       align: 'left',
       field: 'productName',
-      sortable: true,
-    },
-    {
-      name: 'supplierName',
-      label: 'Tên Nhà Cung Cấp',
-      align: 'left',
-      field: 'supplierName',
       sortable: true,
     },
     {
