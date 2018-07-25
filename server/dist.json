@@ -5,10 +5,12 @@
   "author": "ET",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^1.4.0",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "express-graphql": "^0.6.12",
     "faker": "^4.1.0",
     "graphql": "^0.13.2",
+    "graphql-tools": "^3.0.5",
     "lodash": "^4.17.10",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.10"

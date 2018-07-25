@@ -1,4 +1,4 @@
-import {_get, _post, _alert} from '../../util/common'
+import {_get, _post, _procError, _procAlert} from '../../util/common'
 import _d from 'lodash'
 
 export const fetchRecs = ({commit}) => {
@@ -7,19 +7,18 @@ export const fetchRecs = ({commit}) => {
     listSupplier {
       id
       name
-      taxcode
+      taxCode
       address
       phone
     }
   }`)
     .then(({data}) => {
-      _alert('Success', 'positive')
+      _procAlert(data)
       commit('setRecs', data.listSupplier)
       commit('setIsLoading', false)
     })
     .catch(err => {
-      console.log(err)
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
       commit('setIsLoading', false)
     })
 }
@@ -34,9 +33,9 @@ export const deleteRecs = ({commit, getters}) => {
     }`
   )
     .then(({data}) => {
-      _alert(`Đã xóa ${data.deleteSupplier} sản phẩm`, 'info')
-      commit('setIsLoading', false)
+      _procAlert(data)
 
+      commit('setIsLoading', false)
       // remove deleted recs from state.recs
       _d.remove(getters.getRecs, rec => {
         return ids.includes(rec.id)
@@ -47,7 +46,7 @@ export const deleteRecs = ({commit, getters}) => {
       commit('setRecs', _d.clone(getters.getRecs))
     })
     .catch(err => {
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
       commit('setIsLoading', false)
     })
 }
@@ -59,7 +58,7 @@ export const updateRec = ({commit, getters}) => {
     `mutation ($input: SupplierInput) {
       updateSupplier(input: $input) {
         id
-        taxcode
+        taxCode
         name
         address
         phone
@@ -67,12 +66,12 @@ export const updateRec = ({commit, getters}) => {
     }`
   )
     .then(({data}) => {
-      _alert(`Đã cập nhật: ${data.updateSupplier.name}`, 'positive')
+      _procAlert(data)
       commit('setIsLoading', false)
       commit('setIsModalOpened', false)
     })
     .catch(err => {
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
       commit('setIsLoading', false)
     })
 }
