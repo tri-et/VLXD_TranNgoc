@@ -1,13 +1,16 @@
 import {Supplier} from '../../models'
+import {_auth} from '../../util'
 
 const resolvers = {
   RootQuery: {
-    async listSupplier() {
+    async listSupplier(_, __, {authUser}) {
+      _auth(authUser)
       return await Supplier.all()
     },
   },
   RootMutation: {
-    async deleteSupplier(_, {input}) {
+    async deleteSupplier(_, {input}, {authUser}) {
+      _auth(authUser)
       return await Supplier.destroy({
         where: {
           id: {
@@ -16,7 +19,8 @@ const resolvers = {
         },
       })
     },
-    async updateSupplier(_, {input}) {
+    async updateSupplier(_, {input}, {authUser}) {
+      _auth(authUser)
       return await Supplier.upsert(input).then(() => {
         return input
       })

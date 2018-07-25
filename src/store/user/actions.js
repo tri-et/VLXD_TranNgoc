@@ -31,7 +31,7 @@ export const loginUser = ({commit}, payload) => {
     }`
   )
     .then(({data}) => {
-      if (data.errors) _alert(data.errors[0].message, 'negative')
+      if (data.errors) _alert(data.errors[0].message, 'warning')
       else {
         // Login successfully
         localStorage.setItem('auth-token', data.login)

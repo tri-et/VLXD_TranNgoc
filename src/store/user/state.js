@@ -1,5 +1,4 @@
 export default {
-  isAuth: false,
   token: localStorage.getItem('auth-token') || '',
   name: '',
   role: '',

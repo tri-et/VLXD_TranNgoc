@@ -2,14 +2,13 @@ import {User} from '../../models'
 import GraphQLDate from 'graphql-date'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import {_auth} from '../../util'
 
 const resolvers = {
   Date: GraphQLDate,
   RootQuery: {
     async listUser(_, __, {authUser}) {
-      if (!authUser) {
-        throw new Error('You are not authenticated!')
-      }
+      _auth(authUser)
       return await User.all()
     },
   },
@@ -32,7 +31,8 @@ const resolvers = {
         {expiresIn: '1y'}
       )
     },
-    async createUser(_, {input}) {
+    async createUser(_, {input}, {authUser}) {
+      _auth(authUser)
       return await User.create({
         username: input.username,
         password: await bcrypt.hash(input.password, 10),
@@ -41,12 +41,14 @@ const resolvers = {
         return input
       })
     },
-    async updateUser(_, {input}) {
+    async updateUser(_, {input}, {authUser}) {
+      _auth(authUser)
       const user = await User.findById(input.id)
       await user.update(input)
       return user
     },
-    async deleteUser(_, {input}) {
+    async deleteUser(_, {input}, {authUser}) {
+      _auth(authUser)
       return await User.destroy({
         where: {
           id: {
