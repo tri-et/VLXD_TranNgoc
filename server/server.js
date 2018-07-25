@@ -1,5 +1,5 @@
+import 'babel-polyfill' // This is for to run babel-parsed code with async/await
 import Express from 'express'
-// import GraphHttp from 'express-graphql'
 import {graphqlExpress, graphiqlExpress} from 'apollo-server-express'
 import ServeStatic from 'serve-static'
 import bodyParser from 'body-parser'
