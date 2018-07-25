@@ -1,4 +1,4 @@
-import {_get, _post, _alert} from '../../util/common'
+import {_get, _post, _procError, _procAlert} from '../../util/common'
 import _d from 'lodash'
 
 export const fetchRecs = ({commit}) => {
@@ -13,12 +13,12 @@ export const fetchRecs = ({commit}) => {
     }
   }`)
     .then(({data}) => {
-      _alert('Success', 'positive')
+      _procAlert(data)
       commit('setRecs', data.listProduct)
       commit('setIsLoading', false)
     })
     .catch(err => {
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
       commit('setIsLoading', false)
     })
 }
@@ -33,7 +33,7 @@ export const deleteRecs = ({commit, getters}) => {
     }`
   )
     .then(({data}) => {
-      _alert(`Đã xóa ${data.deleteProduct} sản phẩm`, 'info')
+      _procAlert(data)
       commit('setIsLoading', false)
 
       // remove deleted recs from state.recs
@@ -46,7 +46,7 @@ export const deleteRecs = ({commit, getters}) => {
       commit('setRecs', _d.clone(getters.getRecs))
     })
     .catch(err => {
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
       commit('setIsLoading', false)
     })
 }
@@ -66,12 +66,12 @@ export const updateRec = ({commit, getters}) => {
     }`
   )
     .then(({data}) => {
-      _alert(`Đã cập nhật: ${data.updateProduct.name}`, 'positive')
+      _procAlert(data)
       commit('setIsLoading', false)
       commit('setIsModalOpened', false)
     })
     .catch(err => {
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
       commit('setIsLoading', false)
     })
 }

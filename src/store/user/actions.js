@@ -1,4 +1,4 @@
-import {_ax, _get, _post, _alert} from '../../util/common'
+import {_procAlert, _procError, _ax, _get, _post, _alert} from '../../util/common'
 import _d from 'lodash'
 import router from '../../router'
 
@@ -14,12 +14,12 @@ export const fetchRecs = ({commit}) => {
     }
   }`)
     .then(({data}) => {
-      _alert('Success', 'positive')
+      _procAlert(data)
       commit('setRecs', data.listUser)
       commit('setIsLoading', false)
     })
     .catch(err => {
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
       commit('setIsLoading', false)
     })
 }
@@ -42,7 +42,7 @@ export const loginUser = ({commit}, payload) => {
       }
     })
     .catch(err => {
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
     })
 }
 
@@ -56,7 +56,7 @@ export const deleteRecs = ({commit, getters}) => {
     }`
   )
     .then(({data}) => {
-      _alert(`Đã xóa ${data.deleteUser} tài khoản`, 'info')
+      _procAlert(data)
       commit('setIsLoading', false)
 
       // remove deleted recs from state.recs
@@ -69,7 +69,7 @@ export const deleteRecs = ({commit, getters}) => {
       commit('setRecs', _d.clone(getters.getRecs))
     })
     .catch(err => {
-      _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+      _procError(err)
       commit('setIsLoading', false)
     })
 }
@@ -90,12 +90,12 @@ export const updateRec = ({commit, getters}) => {
     }`
     )
       .then(({data}) => {
-        _alert(`Đã cập nhật Tài Khoản: ${data.updateUser.username}`, 'positive')
+        _procAlert(data)
         commit('setIsLoading', false)
         commit('setIsModalOpened', false)
       })
       .catch(err => {
-        _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+        _procError(err)
         commit('setIsLoading', false)
       })
   } else {
@@ -110,12 +110,12 @@ export const updateRec = ({commit, getters}) => {
     }`
     )
       .then(({data}) => {
-        _alert(`Đã tạo Tài Khoản mới: ${data.createUser.username}`, 'positive')
+        _procAlert(data)
         commit('setIsLoading', false)
         commit('setIsModalOpened', false)
       })
       .catch(err => {
-        _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+        _procError(err)
         commit('setIsLoading', false)
       })
   }
