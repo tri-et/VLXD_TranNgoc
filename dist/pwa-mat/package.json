@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "The API for VLXD Tran Ngoc",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "db": "npx babel-node db",
-    "api": "npx babel-node server",
-    "build": "gulp es6"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ET",
   "license": "ISC",
