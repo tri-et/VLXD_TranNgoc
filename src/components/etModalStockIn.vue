@@ -12,14 +12,11 @@
         </q-toolbar-title>
       </q-toolbar>
       <div class="layout-padding">
-        <!-- <q-field class="q-mb-md" :key="field.name" v-for="field in getFields" v-if="!field.hidden" :label-width="3" :icon="field.icon" :label="field.label" :helper="field.desc" error-label="Some error">
-            <q-input v-model="getEditingRec[field.name]" :type="field.type" color="orange-10" />
-          </q-field> -->
         <q-field class="q-mb-md" label="Tên Sản Phẩm" label-width="3" icon="outlined_flag" error-label="Some error">
-          <q-select filter placeholder="Chọn Sản Phẩm" v-model="getEditingRec.productId" :options="getRecsProduct.map(opt => ({label: opt.name, value: opt.id}))" />
+          <q-select filter filter-placeholder="Nhập Tên Sản Phẩm" placeholder="Chọn Sản Phẩm" v-model="getEditingRec.productId" :options="getRecsProduct.map(opt => ({label: opt.name, value: opt.id}))" />
         </q-field>
         <q-field class="q-mb-md" label="Tên Nhà Cung Cấp" label-width="3" icon="store" error-label="Some error">
-          <q-select filter placeholder="Chọn Nhà Cung Cấp" v-model="getEditingRec.supplierId" :options="getRecsSuplier.map(opt => ({label: opt.name, value: opt.id}))" />
+          <q-select filter filter-placeholder="Nhập Tên Nhà Cung Cấp" placeholder="Chọn Nhà Cung Cấp" v-model="getEditingRec.supplierId" :options="getRecsSuplier.map(opt => ({label: opt.name, value: opt.id}))" />
         </q-field>
         <q-field class="q-mb-md" :error="error=='price'" label="Giá Tham Khảo" label-width="3" icon="attach_money" error-label="Chỉ được nhập số">
           <q-input v-model="getEditingRec.price" type="number" color="blue" @keydown="validation('price',$event)" />
