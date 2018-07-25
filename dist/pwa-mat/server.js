@@ -26,9 +26,8 @@ var _expressJwt2 = _interopRequireDefault(_expressJwt);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// This is for to run babel-parsed code with async/await
 require('dotenv').config();
-// import GraphHttp from 'express-graphql'
-
 
 var APP_PORT = 8888;
 var app = (0, _express2.default)();
