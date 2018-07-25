@@ -30,5 +30,5 @@ app.use(
 app.use('/graphiql', graphiqlExpress({endpointURL: 'api'}))
 
 app.listen(process.env.PORT || APP_PORT, () => {
-  console.log(`VLXD_API listening on port ${app.address().port} ...`)
+  console.log(`VLXD_API listening on port ${APP_PORT} ...`)
 })
