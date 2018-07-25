@@ -2,7 +2,6 @@
   "name": "pwa-vlxd",
   "version": "1.0.0",
   "description": "The API for VLXD Tran Ngoc",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "db": "npx babel-node db",
