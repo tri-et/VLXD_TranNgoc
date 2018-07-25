@@ -1,9 +1,6 @@
 import axios from 'axios'
 import {Notify} from 'quasar'
 
-// get auth token, to make sure all _get _post require got auth-token attached
-const token = localStorage.getItem('auth-token')
-
 const _ax = axios.create({
   timeout: 20000,
   // remove the abundant "data" key from grahql response
@@ -12,24 +9,36 @@ const _ax = axios.create({
     else return data // keep all data properties
   }),
 })
-if (token) {
-  _ax.defaults.headers.common['Authorization'] = 'Bearer ' + token
+
+// get auth token, to make sure all _get _post require got auth-token attached
+let getToken = () => localStorage.getItem('auth-token')
+let setToken = () => {
+  let token = getToken()
+  if (token) {
+    _ax.defaults.headers.common['Authorization'] = 'Bearer ' + token
+  } else {
+    _ax.defaults.headers.common['Authorization'] = null
+  }
 }
 
-const _get = query =>
-  _ax.get('/api', {
+const _get = query => {
+  setToken()
+  return _ax.get('/api', {
     params: {
       query: query,
     },
   })
+}
 
-const _post = (input, query) =>
-  _ax({
+const _post = (input, query) => {
+  setToken()
+  return _ax({
     method: 'post',
     url: '/api',
     headers: {'Content-Type': 'application/json'},
     data: JSON.stringify({query, variables: {input}}),
   })
+}
 
 const _alert = (message, type) => {
   Notify.create({
@@ -38,4 +47,5 @@ const _alert = (message, type) => {
     timeout: 2000,
   })
 }
+
 export {_ax, _alert, _get, _post}

@@ -1,16 +1,16 @@
 import {Product} from '../../models'
+import {_auth} from '../../util'
 
 const resolvers = {
   RootQuery: {
     async listProduct(_, __, {authUser}) {
-      if (!authUser) {
-        throw new Error('You are not authenticated!')
-      }
+      _auth(authUser)
       return await Product.all()
     },
   },
   RootMutation: {
-    async deleteProduct(_, {input}) {
+    async deleteProduct(_, {input}, {authUser}) {
+      _auth(authUser)
       return await Product.destroy({
         where: {
           id: {
@@ -19,7 +19,8 @@ const resolvers = {
         },
       })
     },
-    async updateProduct(_, {input}) {
+    async updateProduct(_, {input}, {authUser}) {
+      _auth(authUser)
       return await Product.upsert(input).then(() => {
         return input
       })
