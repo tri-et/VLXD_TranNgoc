@@ -71,7 +71,7 @@ export default {
 
 <style>
 .et-footer {
-  background-color: #0089d2;
+  background-color: #660066;
   font-size: 0.8em;
 }
 </style>

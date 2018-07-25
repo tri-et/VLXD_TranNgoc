@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {Notify} from 'quasar'
 
-const _ax = axios.create({
+export const _ax = axios.create({
   timeout: 20000,
   // remove the abundant "data" key from grahql response
   transformResponse: axios.defaults.transformResponse.concat(data => {
@@ -21,7 +21,7 @@ let setToken = () => {
   }
 }
 
-const _get = query => {
+export const _get = query => {
   setToken()
   return _ax.get('/api', {
     params: {
@@ -30,7 +30,7 @@ const _get = query => {
   })
 }
 
-const _post = (input, query) => {
+export const _post = (input, query) => {
   setToken()
   return _ax({
     method: 'post',
@@ -40,7 +40,7 @@ const _post = (input, query) => {
   })
 }
 
-const _alert = (message, type) => {
+export const _alert = (message, type) => {
   Notify.create({
     message,
     type,
@@ -48,4 +48,13 @@ const _alert = (message, type) => {
   })
 }
 
-export {_ax, _alert, _get, _post}
+export const _procAlert = data => {
+  if (data.errors) _alert(data.errors[0].message, 'warning')
+  else {
+    _alert('Success', 'positive')
+  }
+}
+
+export const _procError = err => {
+  _alert(`Code: ${err.response.status} - ${err.response.statusText}`, 'negative')
+}
