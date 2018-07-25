@@ -17,7 +17,7 @@ let setToken = () => {
   if (token) {
     _ax.defaults.headers.common['Authorization'] = 'Bearer ' + token
   } else {
-    _ax.defaults.headers.common['Authorization'] = null
+    delete _ax.defaults.headers.common['Authorization']
   }
 }
 

@@ -2,12 +2,15 @@
   <q-layout view="hHh Lpr fFf">
     <q-layout-header>
       <q-toolbar color="green" :glossy="$q.theme === 'mat'" :inverted="$q.theme === 'ios'">
-        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
+        <q-btn dense @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
           <q-icon name="menu" />
         </q-btn>
         <q-toolbar-title>
           VLXD Trần Ngọc
         </q-toolbar-title>
+        <q-btn dense round @click="logout" aria-label="Menu">
+          <q-icon name="power_off" />
+        </q-btn>
       </q-toolbar>
     </q-layout-header>
     <q-layout-footer>
@@ -32,9 +35,6 @@
           <q-item-side icon="security" />
           <q-item-main label="Tài Khoản Đăng Nhập" sublabel="Liệt Kê & Tìm Kiếm Tài Khoản" />
         </q-item>
-        <q-item @click.native="openURL('https://discord.gg/5TDhbDg')">
-          <q-item-side icon="chat" />
-          <q-item-main label="Discord Chat Channel" sublabel="https://discord.gg/5TDhbDg" />
         <q-item to="/stockins">
           <q-item-side icon="archive" />
           <q-item-main label="Nhập Kho" sublabel="Liệt Kê & Tìm Kiếm Nhập Kho" />
@@ -42,10 +42,6 @@
         <q-item to="/stocks">
           <q-item-side icon="account_balance" />
           <q-item-main label="Tồn Kho" sublabel="Liệt Kê & Tìm Kiếm Tồn Kho" />
-        </q-item>
-        <q-item @click.native="openURL('https://twitter.com/quasarframework')">
-          <q-item-side icon="rss feed" />
-          <q-item-main label="Twitter" sublabel="@quasarframework" />
         </q-item>
       </q-list>
     </q-layout-drawer>
@@ -57,8 +53,6 @@
 </template>
 
 <script>
-import {openURL} from 'quasar'
-
 export default {
   name: 'LayoutDefault',
   data() {
@@ -67,7 +61,10 @@ export default {
     }
   },
   methods: {
-    openURL,
+    logout() {
+      localStorage.removeItem('auth-token')
+      this.$router.push('/login')
+    },
   },
 }
 </script>
