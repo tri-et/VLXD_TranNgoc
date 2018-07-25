@@ -3,7 +3,7 @@
 module.exports = function(ctx) {
   return {
     // app plugins (/src/plugins)
-    plugins: ['axios'],
+    plugins: ['axios', 'vuelidate', 'addressbar-color'],
     css: ['app.styl'],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
@@ -76,10 +76,16 @@ module.exports = function(ctx) {
         'QField',
         'QInput',
         'QChip',
+        'QCard',
+        'QCardTitle',
+        'QCardMain',
+        'QCardMedia',
+        'QCardSeparator',
+        'QCardActions',
       ],
       directives: ['Ripple', 'CloseOverlay'],
       // Quasar plugins
-      plugins: ['Notify'],
+      plugins: ['Notify', 'AddressbarColor'],
       iconSet: 'material-icons',
       // i18n: 'de' // Quasar language
     },

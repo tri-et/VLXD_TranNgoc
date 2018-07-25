@@ -18,7 +18,18 @@ dev() {
   npm run dev
 }
 
-gendb() {
+api() {
+  npm run api
+}
+
+migrate() {
   cd server
-  npx babel-node db
+  sequelize db:migrate
+  cd ..
+}
+
+seed() {
+  cd server
+  sequelize db:seed:all
+  cd ..
 }
