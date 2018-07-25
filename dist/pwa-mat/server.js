@@ -49,5 +49,5 @@ app.use('/api', _bodyParser2.default.json(), auth, (0, _apolloServerExpress.grap
 app.use('/graphiql', (0, _apolloServerExpress.graphiqlExpress)({ endpointURL: 'api' }));
 
 app.listen(process.env.PORT || APP_PORT, function () {
-  console.log('VLXD_API listening on port ' + APP_PORT + ' ...');
+  console.log('VLXD_API listening on port ' + app.address().port + ' ...');
 });
