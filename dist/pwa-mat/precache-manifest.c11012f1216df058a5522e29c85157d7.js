@@ -60,28 +60,28 @@ self.__precacheManifest = [
     "url": "fonts/KFOlCnqEu92Fr1MmWUlfBBc-.cf6613d.woff"
   },
   {
-    "revision": "3020c8ac2c2872dec7741e5948520093",
-    "url": "statics/icons/icon-128x128.png"
-  },
-  {
     "revision": "2f9d7587924933c1912c342b190b53ca",
     "url": "statics/icons/favicon-32x32.png"
   },
   {
-    "revision": "406cd8f43672062874fe",
-    "url": "js/app.406cd8f4.js"
+    "revision": "3020c8ac2c2872dec7741e5948520093",
+    "url": "statics/icons/icon-128x128.png"
   },
   {
     "revision": "da2b422e2895b9b9c1782a71b6be9d63",
     "url": "statics/icons/apple-icon-152x152.png"
   },
   {
-    "revision": "20c6420ccf16a07d9d56538e30a6b524",
-    "url": "statics/icons/icon-256x256.png"
+    "revision": "406cd8f43672062874fe",
+    "url": "js/app.406cd8f4.js"
   },
   {
     "revision": "8c4120b4e88276badbc808e518572fad",
     "url": "statics/icons/icon-192x192.png"
+  },
+  {
+    "revision": "20c6420ccf16a07d9d56538e30a6b524",
+    "url": "statics/icons/icon-256x256.png"
   },
   {
     "revision": "e9dbbe8a693dd275c16d32feb101f1c1",
