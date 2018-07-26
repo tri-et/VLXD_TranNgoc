@@ -1,5 +1,5 @@
 <template>
-  <q-modal no-backdrop-dismiss no-esc-dismiss v-model="isModalOpened" :content-css="{minWidth:'75vw', minHeight:'80vh'}">
+  <q-modal no-backdrop-dismiss no-esc-dismiss v-model="isModalOpened" content-classes="no-jumping">
     <q-modal-layout>
         <q-toolbar slot="header" color="tertiary">
           <q-btn
@@ -77,4 +77,15 @@ export default {
 </script>
 
 <style>
+@media (max-width: 601px) {
+  .no-jumping {
+    min-width: calc(75vw) !important;
+  }
+}
+@media (min-width: 602px) {
+  .no-jumping {
+    min-width: calc(75vw) !important;
+    min-height: calc(80vh) !important;
+  }
+}
 </style>
