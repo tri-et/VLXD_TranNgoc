@@ -1,5 +1,5 @@
 <template>
-  <q-card inline class="fixed-center">
+  <q-card square class="et-login center">
     <q-card-media>
       <svg class="center" id="logo" viewBox="0 0 483 483"
         width="128px" height="128px" v-html="getLoginLogo">
@@ -11,21 +11,25 @@
         <q-icon name="vpn_key" class="q-mr-sm"/>Đăng Nhập
       </div>
     </q-card-title>
-    <q-card-main>
+    <q-card-main class="q-mb-md">
       <q-input clearable v-model="username" float-label="Tên Người Dùng" class="q-mb-lg" color="light-green-9"/>
-      <q-input v-model="password" float-label="Mật Khẩu" class="q-mb-lg" color="red-9" type="password"/>
+      <q-input v-model="password" float-label="Mật Khẩu" color="red-9" type="password"/>
     </q-card-main>
-    <q-card-actions class="bg-grey-3 row justify-center">
-        <q-btn color="green" label="Sign In" class="q-ma-sm col-10" @click="loginUser({username,password})"/>
+    <q-card-actions>
+      <div class="row justify-center" style="height:160px;width:100%;">
+        <q-btn :loading="getIsLoading" color="green" label="Sign In" class="q-ma-sm col-10" @click="loginUser({username,password})">
+          <q-spinner-pie slot="loading" size="25px"/>
+        </q-btn>
         <q-btn color="primary" label="Visit Facebook" class="q-ma-sm col-10"/>
         <q-btn color="negative" label="Visit Instagram" class="q-ma-sm col-10"/>
+      </div>
     </q-card-actions>
   </q-card>
 </template>
 <script type="text/javascript">
 import logoData from '../assets/logoData'
 import Vivus from 'vivus'
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 export default {
   data() {
     return {
@@ -42,6 +46,7 @@ export default {
     getLoginLogo() {
       return logoData[this.logo]
     },
+    ...mapGetters('user', ['getIsLoading']),
   },
   methods: {
     ...mapActions('user', ['loginUser']),
@@ -78,9 +83,16 @@ export default {
 }
 
 @media (max-width: 601px) {
-  .q-card {
+  .et-login {
     width: 100%;
-    height: 100%;
+  }
+  .q-card-actions {
+    height: calc(100vh - 439px) !important;
+  }
+}
+@media (min-width: 602px) {
+  .q-card-actions {
+    height: 240px !important;
   }
 }
 </style>
