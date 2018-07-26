@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh Lpr fFf">
     <q-layout-header>
-      <q-toolbar color="green" :glossy="$q.theme === 'mat'" :inverted="$q.theme === 'ios'">
+      <q-toolbar color="green-8" :inverted="$q.theme === 'ios'">
         <q-btn dense @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
           <q-icon name="menu" />
         </q-btn>
@@ -14,7 +14,7 @@
       </q-toolbar>
     </q-layout-header>
     <q-layout-footer>
-      <div class="text-white et-footer text-weight-light text-center">
+      <div class="text-white et-footer text-weight-light text-center bg-grey-8">
         <small>
           <cite>© Copyright 2018 Elitetech Vietnam Co., Ltd. All rights reserved.</cite>
         </small>
@@ -63,7 +63,6 @@ export default {
 
 <style>
 .et-footer {
-  background-color: #660066;
   font-size: 0.8em;
 }
 </style>
