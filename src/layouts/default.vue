@@ -31,6 +31,10 @@
           <q-item-side icon="store" />
           <q-item-main label="Nhà Cung Cấp" sublabel="Liệt Kê & Tìm Kiếm Nhà Cung Cấp" />
         </q-item>
+         <q-item to="/clients">
+          <q-item-side icon="people" />
+          <q-item-main label="Khách Hàng" sublabel="Liệt Kê & Tìm Kiếm Khách Hàng" />
+        </q-item>
         <q-item to="/users">
           <q-item-side icon="security" />
           <q-item-main label="Tài Khoản Đăng Nhập" sublabel="Liệt Kê & Tìm Kiếm Tài Khoản" />

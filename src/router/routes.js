@@ -3,6 +3,7 @@ import defaultLayout from 'layouts/default'
 import loginLayout from 'layouts/login'
 import pgProducts from 'pages/products'
 import pgSuppliers from 'pages/suppliers'
+import pgClients from 'pages/clients'
 import pgUsers from 'pages/users'
 
 export default [
@@ -23,6 +24,11 @@ export default [
       {
         path: 'suppliers',
         component: pgSuppliers,
+        meta: {requiresAuth: true},
+      },
+      {
+        path: 'clients',
+        component: pgClients,
         meta: {requiresAuth: true},
       },
       {
