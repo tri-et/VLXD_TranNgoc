@@ -14,6 +14,9 @@ import stockInRes from './stockin/res'
 import stockDef from './stock/def'
 import stockRes from './stock/res'
 
+import clientDef from './client/def'
+import clientRes from './client/res'
+
 const SchemaDefinition = `
   schema {
     query: RootQuery,
@@ -30,6 +33,7 @@ const RootQuery = `
     listSupplier: [Supplier]
     listStockIn:[StockIn]
     listStock:[Stock]
+    listClient: [Client]
   }
 `
 
@@ -48,6 +52,9 @@ const RootMutation = `
 
     deleteStockIn(input:[Int]): Int
     updateStockIn(input:StockinInput): StockIn
+
+    deleteClient(input:[Int]): Int
+    updateClient(input:ClientInput): Client
 
   }
 `
