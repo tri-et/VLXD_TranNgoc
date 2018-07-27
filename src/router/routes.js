@@ -5,6 +5,7 @@ import pgProducts from 'pages/products'
 import pgSuppliers from 'pages/suppliers'
 import pgUsers from 'pages/users'
 import pgStockin from 'pages/stockins'
+import pgStock from 'pages/stocks'
 
 import pgStockins from 'pages/stockins'
 import pgStocks from 'pages/stocks'
@@ -35,11 +36,13 @@ export default [
       },
       {
         path: 'stockins',
-        component: pgStockins,
+        component: pgStockin,
+        meta: {requiresAuth: true},
       },
       {
         path: 'stocks',
-        component: pgStocks,
+        component: pgStock,
+        meta: {requiresAuth: true},
       },
     ],
   },

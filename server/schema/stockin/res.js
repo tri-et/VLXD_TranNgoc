@@ -34,13 +34,20 @@ const resolvers = {
             $in: input,
           },
         },
+        individualHooks: true,
       })
     },
     async updateStockIn(_, { input }, { authUser }) {
       _auth(authUser)
-      return await StockIn.upsert(input).then(() => {
-        return input
-      })
+      if (input.id == undefined) {
+        return await StockIn.create(input, { individualHooks: true }).then(() => {
+          return input
+        })
+      } else {
+        return await StockIn.update(input, { where: { id: input.id }, individualHooks: true }).then(() => {
+          return input
+        })
+      }
     },
   },
 }

@@ -11,6 +11,9 @@ import supplierRes from './supplier/res'
 import stockInDef from './stockin/def'
 import stockInRes from './stockin/res'
 
+import stockDef from './stock/def'
+import stockRes from './stock/res'
+
 const SchemaDefinition = `
   schema {
     query: RootQuery,
@@ -26,6 +29,7 @@ const RootQuery = `
     listProduct: [Product]
     listSupplier: [Supplier]
     listStockIn:[StockIn]
+    listStock:[Stock]
   }
 `
 
@@ -49,6 +53,6 @@ const RootMutation = `
 `
 
 export default makeExecutableSchema({
-  typeDefs: [SchemaDefinition, RootQuery, RootMutation, userDef, productDef, supplierDef, stockInDef],
-  resolvers: [userRes, productRes, supplierRes, stockInRes],
+  typeDefs: [SchemaDefinition, RootQuery, RootMutation, userDef, productDef, supplierDef, stockInDef, stockDef],
+  resolvers: [userRes, productRes, supplierRes, stockInRes, stockRes],
 })
