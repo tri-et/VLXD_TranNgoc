@@ -4,6 +4,7 @@ import loginLayout from 'layouts/login'
 import pgProducts from 'pages/products'
 import pgSuppliers from 'pages/suppliers'
 import pgUsers from 'pages/users'
+import pgStockin from 'pages/stockins'
 
 import pgStockins from 'pages/stockins'
 import pgStocks from 'pages/stocks'
