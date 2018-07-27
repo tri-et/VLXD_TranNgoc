@@ -15,10 +15,10 @@ export default {
       width: '34px',
     },
     {
-      name: 'taxcode',
+      name: 'taxCode',
       label: 'Mã Nhà Cung Cấp',
       align: 'left',
-      field: 'taxcode',
+      field: 'taxCode',
       sortable: true,
     },
     {
@@ -49,7 +49,7 @@ export default {
       hidden: true,
     },
     {
-      name: 'taxcode',
+      name: 'taxCode',
       label: 'Mã Nhà Cung Cấp',
       type: 'text',
       icon: 'outlined_flag',
