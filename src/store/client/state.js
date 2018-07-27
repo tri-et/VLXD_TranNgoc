@@ -51,7 +51,7 @@ export default {
     {
       name: 'code',
       label: 'Mã Khách Hàng',
-      type: 'text',
+      type: 'number',
       icon: 'outlined_flag',
     },
     {
