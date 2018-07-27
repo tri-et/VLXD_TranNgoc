@@ -35,6 +35,14 @@
           <q-item-side icon="security" />
           <q-item-main label="Tài Khoản Đăng Nhập" sublabel="Liệt Kê & Tìm Kiếm Tài Khoản" />
         </q-item>
+        <q-item to="/stocks">
+          <q-item-side icon="account_balance" />
+          <q-item-main label="Tồn Kho" sublabel="Liệt Kê & Tìm Kiếm Tồn Kho" />
+        </q-item>
+        <q-item to="/users">
+          <q-item-side icon="security" />
+          <q-item-main label="Tài Khoản Đăng Nhập" sublabel="Liệt Kê & Tìm Kiếm Tài Khoản" />
+        </q-item>
       </q-list>
     </q-layout-drawer>
 

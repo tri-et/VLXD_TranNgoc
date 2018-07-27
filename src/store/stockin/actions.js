@@ -4,7 +4,7 @@ import _d from 'lodash'
 export const fetchRecs = ({ commit, getters }) => {
   commit('setIsLoading', true)
   _get(`{
-    listStockin {
+    listStockIn {
       id
       productId
       supplierId
@@ -18,7 +18,7 @@ export const fetchRecs = ({ commit, getters }) => {
       if (!getters.getIsSuccess) {
         _alert('Success', 'positive')
       }
-      commit('setRecs', data.listStockin)
+      commit('setRecs', data.listStockIn)
       commit('setIsLoading', false)
       commit('setIsSuccess', false)
     })
@@ -35,11 +35,11 @@ export const deleteRecs = ({ commit, getters }) => {
   _post(
     ids,
     `mutation ($input: [Int]) {
-      deleteStockin(input: $input)
+      deleteStockIn(input: $input)
     }`
   )
     .then(({ data }) => {
-      _alert(`Đã xóa ${data.deleteStockin} sản phẩm`, 'info')
+      _alert(`Đã xóa sản phẩm`, 'info')
       commit('setIsLoading', false)
 
       // remove deleted recs from state.recs
@@ -62,7 +62,7 @@ export const updateRec = ({ commit, getters }) => {
   _post(
     _d.omit(getters.getEditingRec, ['__index']), // remove __index to match ProductInput definition
     `mutation ($input: StockinInput) {
-      updateStockin(input: $input) {
+      updateStockIn(input: $input) {
         id
         productId
         supplierId

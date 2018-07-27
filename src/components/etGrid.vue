@@ -5,7 +5,7 @@
         <q-icon name="refresh" size="25px" />
         <q-spinner-pie slot="loading" size="25px" />
       </q-btn>
-      <q-btn wait-for-ripple :disabled="getIsLoading" color="green" @click="setEditingRec({})" class="q-mr-sm" :class="{'q-hide-delete':hideAdd}">
+      <q-btn wait-for-ripple :disabled="getIsLoading" color="green" @click="setEditingRec({})" class="q-mr-sm" :class="{'q-hide-add':hideAdd}">
         <q-icon name="add" size="25px" />
       </q-btn>
       <q-icon :name="getIcon" size="25px" />
@@ -138,7 +138,7 @@ export default {
 .q-pa-none {
   padding: 0 !important;
 }
-.q-hide-delete{
+.q-hide-add {
   display: none;
 }
 </style>

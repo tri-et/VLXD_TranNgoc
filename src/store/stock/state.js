@@ -1,5 +1,5 @@
 export default {
-  title: `Thông Tin Nhập Kho`,
+  title: `Thông Tin Tồn Kho`,
   isLoading: false,
   isModalOpened: false,
   editingRec: {},
