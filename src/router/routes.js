@@ -4,9 +4,6 @@ import loginLayout from 'layouts/login'
 import pgProducts from 'pages/products'
 import pgSuppliers from 'pages/suppliers'
 import pgUsers from 'pages/users'
-import pgStockin from 'pages/stockins'
-import pgStock from 'pages/stocks'
-
 import pgStockins from 'pages/stockins'
 import pgStocks from 'pages/stocks'
 export default [
@@ -36,12 +33,12 @@ export default [
       },
       {
         path: 'stockins',
-        component: pgStockin,
+        component: pgStockins,
         meta: {requiresAuth: true},
       },
       {
         path: 'stocks',
-        component: pgStock,
+        component: pgStocks,
         meta: {requiresAuth: true},
       },
     ],
